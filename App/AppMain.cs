@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HandwritingNeuralNetwork
+namespace HandwritingNeuralNetwork.App
 {
-    internal static class Program
+    public static class AppMain
     {
         /// <summary>
         /// The main entry point for the application.
@@ -16,7 +13,10 @@ namespace HandwritingNeuralNetwork
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+         
+            AppRoutes.Route_Main().Display(); //Display the main window
+
+            Application.Run((Form)AppRoutes.ViewMain); //Start the main thread
         }
     }
 }

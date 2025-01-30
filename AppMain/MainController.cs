@@ -1,14 +1,25 @@
 ﻿using HandwritingNeuralNetwork.Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HandwritingNeuralNetwork.AppMain
 {
     public class MainController : ControllerBase<IViewMain>
     {
+        public MainController(IViewMain viewInstance) : base(viewInstance)
+        {
+
+        }
+
+        public void Display()
+        {
+            _view.SetController(this);
+            _view.OpenView();
+            ShowLogin();
+        }
+
+        private void ShowLogin()
+        {
+
+        }
 
     }
 }
