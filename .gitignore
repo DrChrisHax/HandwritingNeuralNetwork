@@ -1,0 +1,54 @@
+# Visual Studio-specific files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build output
+bin/
+obj/
+
+# NuGet packages
+*.nupkg
+packages/
+project.lock.json
+project.assets.json
+
+# Rider (JetBrains)
+.idea/
+
+# ASP.NET Core
+appsettings*.json
+
+# Entity Framework
+Migrations/
+
+# Logs and debug files
+*.log
+*.tlog
+
+# Temporary files
+*.tmp
+*.cache
+*.pdb
+*.ilk
+*.obj
+*.resources
+
+# Compiled DLL and EXE files
+*.dll
+*.exe
+
+# Publish output
+publish/
+
+# Resharper files
+_ReSharper*/
+
+# Ignore secrets
+secrets.json
+
+# Mac and Linux system files
+.DS_Store
+Thumbs.db
