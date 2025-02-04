@@ -13,14 +13,14 @@ namespace HandwritingNeuralNetwork.App
         static void Main()
         {
             DBInit DBInit = new DBInit();
-            DBInit.Connect();
+            DBInit.Init();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-         
-            AppRoutes.Route_Main().Display(); //Display the main window
 
-            Application.Run((Form)AppRoutes.ViewMain); //Start the main thread
+            Form mainForm = (Form)AppRoutes.Route_Main().View; //Display the main window
+
+            Application.Run(mainForm); //Start the main thread
         }
     }
 }

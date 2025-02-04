@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace HandwritingNeuralNetwork.SQLAccess
 {
@@ -16,40 +17,65 @@ namespace HandwritingNeuralNetwork.SQLAccess
             _databaseConnectionString = $"Server=CHRIS-LAPTOP\\HWNN;Database={DatabaseName};User Id=sa;Password=abc123!@#;";
         }
 
-        public void Connect()
+        public void Init()
         {
-            if(!DBExists())
-            {
-                CreateDB();
-                CreateSchema();
-            }
-        }
+            //This class is only used for setting up the DB
+            //We will have another class for reading and writing
+            CreateDB();
+            CreateSchema();
 
-        private bool DBExists()
-        {
-            using (var conn = new SqlConnection(_masterConnectionString))
-            {
-                conn.Open();
-                string query = $"SELECT COUNT(*) FROM sys.databases WHERE name = '{DatabaseName}'";
-
-                using (var cmd = new SqlCommand(query, conn))
-                {
-                    int count = (int)cmd.ExecuteScalar();
-                    conn.Close();
-                    return count > 0;
-                }
-            }
         }
 
         private void CreateDB()
         {
+            string scriptFile = Path.Combine(Directory.GetCurrentDirectory(), "SQLScripts", "Databases", "HWNN.sql");
 
+            ExecuteSqlScript(_masterConnectionString, scriptFile);
         }
 
         private void CreateSchema()
         {
+            string tablesDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SQLScripts", "Tables");
 
+            string[] files = Directory.GetFiles(tablesDir, "*.sql");
+
+            if (files.Length == 0)
+            {
+                Console.WriteLine("No SQL files found in: " + tablesDir);
+                return;
+            }
+
+            foreach (string file in files)
+            {
+                Console.WriteLine("Executing SQL file: " + file);
+                ExecuteSqlScript(_databaseConnectionString, file);
+            }
         }
 
+        private void ExecuteSqlScript(string connectionString, string scriptFile)
+        {
+            string script = File.ReadAllText(scriptFile);
+
+            string[] commands = Regex.Split(script, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                foreach (string command in commands)
+                {
+                    if (!string.IsNullOrWhiteSpace(command))
+                    {
+                        using (SqlCommand cmd = connection.CreateCommand())
+                        {
+                            cmd.CommandText = command;
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+
+                connection.Close();
+            }
+        }
     }
 }
