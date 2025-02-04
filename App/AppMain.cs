@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HandwritingNeuralNetwork.SQLAccess;
+using System;
 using System.Windows.Forms;
 
 namespace HandwritingNeuralNetwork.App
@@ -11,12 +12,15 @@ namespace HandwritingNeuralNetwork.App
         [STAThread]
         static void Main()
         {
+            DBInit DBInit = new DBInit();
+            DBInit.Init();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-         
-            AppRoutes.Route_Main().Display(); //Display the main window
 
-            Application.Run((Form)AppRoutes.ViewMain); //Start the main thread
+            Form mainForm = (Form)AppRoutes.Route_Main().View; //Display the main window
+
+            Application.Run(mainForm); //Start the main thread
         }
     }
 }
