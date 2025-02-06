@@ -1,4 +1,6 @@
-﻿using HandwritingNeuralNetwork.Shared;
+﻿using HandwritingNeuralNetwork.Models;
+using HandwritingNeuralNetwork.Shared;
+using System;
 
 namespace HandwritingNeuralNetwork.AppMain
 {
