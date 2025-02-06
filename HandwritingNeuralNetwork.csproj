@@ -37,6 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -73,6 +74,8 @@
     <Compile Include="App\AppRoutes.cs" />
     <Compile Include="App\AppMain.cs" />
     <Compile Include="Login\LoginController.cs" />
+    <Compile Include="Models\model_base.cs" />
+    <Compile Include="Models\SystemUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\ControllerBase.cs" />
     <Compile Include="Shared\IViewBase.cs" />
@@ -120,11 +123,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="SQLScripts\Databases\HWNN.sql" />
+    <Content Include="SQLScripts\Tables\SystemUser.sql" />
   </ItemGroup>
-  <ItemGroup>
-  <Content Include="SQLScripts\**\*">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-  </Content>
-</ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(ProjectDir)SQLScripts\*" "$(TargetDir)SQLScripts" /E /I /Y</PostBuildEvent>
+  </PropertyGroup>
 </Project>
