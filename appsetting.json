@@ -1,6 +1,6 @@
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=CHRIS-LAPTOP\\HWNN;Database=HWNN;User Id=sa;Password=abc123!@#;"
+    "DefaultConnection": "Server=localhost\\HWNN;Database=HWNN;User Id=sa;Password=abc123!@#;"
   }
 }
 

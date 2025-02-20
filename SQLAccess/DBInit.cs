@@ -13,8 +13,8 @@ namespace HandwritingNeuralNetwork.SQLAccess
 
         public DBInit()
         {
-            _masterConnectionString = "Server=CHRIS-LAPTOP\\HWNN;Database=master;User Id=sa;Password=abc123!@#;";
-            _databaseConnectionString = $"Server=CHRIS-LAPTOP\\HWNN;Database={DatabaseName};User Id=sa;Password=abc123!@#;";
+            _masterConnectionString = "Server=localhost\\HWNN;Database=HWNN;User Id=sa;Password=abc123!@#;";
+            _databaseConnectionString = $"Server=localhost\\HWNN;Database={DatabaseName};User Id=sa;Password=abc123!@#;";
         }
 
         public void Init()
