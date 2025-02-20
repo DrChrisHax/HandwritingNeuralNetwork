@@ -1,4 +1,5 @@
 ﻿using HandwritingNeuralNetwork.AppMain;
+using HandwritingNeuralNetwork.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,9 +21,9 @@ namespace HandwritingNeuralNetwork
             InitializeComponent();
         }
 
-        public void DisplayChildView(object child)
+        public void DisplayChildView(Control control)
         {
-            throw new NotImplementedException();
+            ControlUtilities.PanelLoad(MainPanel, control);
         }
 
         public void OpenView()

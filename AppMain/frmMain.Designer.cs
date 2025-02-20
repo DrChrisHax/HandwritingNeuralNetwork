@@ -28,13 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.MainPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
+            // 
+            // MainPanel
+            // 
+            this.MainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.MainPanel.Location = new System.Drawing.Point(0, 0);
+            this.MainPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(835, 450);
+            this.MainPanel.TabIndex = 0;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(835, 450);
+            this.Controls.Add(this.MainPanel);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMain";
@@ -44,6 +58,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel MainPanel;
     }
 }
 

@@ -11,7 +11,7 @@ namespace HandwritingNeuralNetwork.Models
 {
     public abstract class model_base : INotifyPropertyChanged
     {
-        private readonly string _connectionString = $"Server=CHRIS-LAPTOP\\HWNN;Database=HWNN;User Id=sa;Password=abc123!@#;";
+        private readonly string _connectionString = $"Server=localhost;Database=HWNN;User Id=sa;Password=abc123!@#;";
 
         #region INotifyPropertyChanged Members
 

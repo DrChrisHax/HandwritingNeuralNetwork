@@ -78,6 +78,7 @@
     <Compile Include="Models\SystemUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\ControllerBase.cs" />
+    <Compile Include="Shared\ControlUtilities.cs" />
     <Compile Include="Shared\IViewBase.cs" />
     <Compile Include="SQLAccess\DBInit.cs" />
     <Compile Include="WritingToText\WritingToTextController.cs" />
