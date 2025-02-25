@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HandwritingNeuralNetwork.Shared;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +13,15 @@ namespace HandwritingNeuralNetwork.AIModel
 {
     public partial class ctlAIInput : UserControl, IViewAIInput
     {
-        private AIInputController _controller;
+        private AIInputController _controller; 
+        private DrawingGrid _grid;
 
         public ctlAIInput()
         {
             InitializeComponent();
+
+            _grid = new DrawingGrid();
+            ControlUtilities.PanelLoad(pnlDrawingGrid, _grid);
         }
 
         public UserControl GetControlSurface()
@@ -28,5 +33,14 @@ namespace HandwritingNeuralNetwork.AIModel
         {
             _controller = (AIInputController)controller;
         }
+
+        #region ... Events ...
+
+        private void btnClearGrid_Click(object sender, EventArgs e)
+        {
+            _grid.Clear();
+        }
+
+        #endregion
     }
 }

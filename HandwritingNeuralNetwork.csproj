@@ -69,6 +69,12 @@
     <Compile Include="AIModel\ctlAIInput.Designer.cs">
       <DependentUpon>ctlAIInput.cs</DependentUpon>
     </Compile>
+    <Compile Include="AIModel\DrawingGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AIModel\DrawingGrid.Designer.cs">
+      <DependentUpon>DrawingGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="AIModel\IViewAIInput.cs" />
     <Compile Include="AIModel\NeuralNet.cs" />
     <Compile Include="AppMain\frmMain.cs">
@@ -94,6 +100,9 @@
     <Compile Include="WritingToText\WritingToTextController.cs" />
     <EmbeddedResource Include="AIModel\ctlAIInput.resx">
       <DependentUpon>ctlAIInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AIModel\DrawingGrid.resx">
+      <DependentUpon>DrawingGrid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AppMain\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
