@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace HandwritingNeuralNetwork.AppMain
 {
-    public interface IViewMain : IViewBase
+    public interface IViewMain : IViewFormBase
     {
 
     }

@@ -62,6 +62,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AIModel\AIInputController.cs" />
+    <Compile Include="AIModel\ctlAIInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AIModel\ctlAIInput.Designer.cs">
+      <DependentUpon>ctlAIInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AIModel\IViewAIInput.cs" />
     <Compile Include="AIModel\NeuralNet.cs" />
     <Compile Include="AppMain\frmMain.cs">
       <SubType>Form</SubType>
@@ -80,8 +88,13 @@
     <Compile Include="Shared\ControllerBase.cs" />
     <Compile Include="Shared\ControlUtilities.cs" />
     <Compile Include="Shared\IViewBase.cs" />
+    <Compile Include="Shared\IViewControlBase.cs" />
+    <Compile Include="Shared\IViewFormBase.cs" />
     <Compile Include="SQLAccess\DBInit.cs" />
     <Compile Include="WritingToText\WritingToTextController.cs" />
+    <EmbeddedResource Include="AIModel\ctlAIInput.resx">
+      <DependentUpon>ctlAIInput.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AppMain\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
