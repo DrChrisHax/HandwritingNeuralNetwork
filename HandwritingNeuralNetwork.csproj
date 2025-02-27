@@ -149,6 +149,9 @@
     <Content Include="SQLScripts\Databases\HWNN.sql" />
     <Content Include="SQLScripts\Tables\SystemUser.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SQLScripts\Static Data\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(ProjectDir)SQLScripts\*" "$(TargetDir)SQLScripts" /E /I /Y</PostBuildEvent>
