@@ -22,6 +22,8 @@ namespace HandwritingNeuralNetwork.AIModel
 
             _grid = new DrawingGrid();
             ControlUtilities.PanelLoad(pnlDrawingGrid, _grid);
+
+
         }
 
         public UserControl GetControlSurface()
@@ -40,6 +42,18 @@ namespace HandwritingNeuralNetwork.AIModel
         {
             _grid.Clear();
         }
+
+        private void btnAnalyze_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlDrawingGrid_Paint(object sender, PaintEventArgs e)
+        {
+            //Called when the user draws on the grid
+        }
+
+
 
         #endregion
     }

@@ -91,6 +91,7 @@
     <Compile Include="Models\model_base.cs" />
     <Compile Include="Models\SystemUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\AppConstants.cs" />
     <Compile Include="Shared\ControllerBase.cs" />
     <Compile Include="Shared\ControlUtilities.cs" />
     <Compile Include="Shared\IViewBase.cs" />

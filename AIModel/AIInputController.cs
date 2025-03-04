@@ -10,11 +10,17 @@ namespace HandwritingNeuralNetwork.AIModel
 {
     public class AIInputController : ControllerBase<IViewAIInput>
     {
+        private NeuralNet _ai;
+
         public AIInputController(IViewAIInput view) : base(view) 
-        { 
-        
+        {
+            _ai = new NeuralNet(AppConstants.INPUT_NEURONS, AppConstants.HIDDEN_NEURONS, AppConstants.OUTPUT_NEURONS);
         }
 
+        public void Analyze()
+        {
+
+        }
 
 
 
