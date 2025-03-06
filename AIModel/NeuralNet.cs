@@ -31,6 +31,11 @@ namespace HandwritingNeuralNetwork.AIModel
             InitializeParameters(); //This will pull data from the DB if it exists
         }
 
+        public float[] Analyze()
+        {
+            return null;
+        }
+
         private void InitializeParameters()
         {
 

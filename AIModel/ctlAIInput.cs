@@ -48,6 +48,22 @@ namespace HandwritingNeuralNetwork.AIModel
 
         }
 
+        private void btnTrain_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTrainingNumber_Click(object sender, EventArgs e)
+        {
+            cntxTrainingNumbers.Show(new System.Drawing.Point(MousePosition.X, MousePosition.Y));
+        }
+
+        private void cntxTrainingNumbers_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            btnTrainingNumber.Text = e.ClickedItem.Text;
+            btnTrainingNumber.Tag = e.ClickedItem.Tag;
+        }
+
         private void pnlDrawingGrid_Paint(object sender, PaintEventArgs e)
         {
             //Called when the user draws on the grid
@@ -55,6 +71,10 @@ namespace HandwritingNeuralNetwork.AIModel
 
 
 
+
+
         #endregion
+
+        
     }
 }
