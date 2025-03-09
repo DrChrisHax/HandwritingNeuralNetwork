@@ -36,6 +36,19 @@ namespace HandwritingNeuralNetwork.AIModel
             Invalidate(); //Force the control to redraw.
         }
 
+        public void Fill()
+        {
+            // Reset each cell to true.
+            for (int row = 0; row < GRID_ROWS; row++)
+            {
+                for (int col = 0; col < GRID_COLUMNS; col++)
+                {
+                    _cells[row, col] = true;
+                }
+            }
+            Invalidate(); //Force the control to redraw.
+        }
+
 
         protected override void OnPaint(PaintEventArgs e)
         {

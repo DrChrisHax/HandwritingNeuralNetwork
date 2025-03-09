@@ -49,6 +49,7 @@
             this.toolNotANumber = new System.Windows.Forms.ToolStripMenuItem();
             this.lblTrainAs = new System.Windows.Forms.Label();
             this.lblPrediction = new System.Windows.Forms.Label();
+            this.btnFillGrid = new System.Windows.Forms.Button();
             this.cntxTrainingNumbers.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -262,11 +263,30 @@
             this.lblPrediction.TabIndex = 7;
             this.lblPrediction.Text = "The number below is a 0";
             // 
+            // btnFillGrid
+            // 
+            this.btnFillGrid.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnFillGrid.AutoSize = true;
+            this.btnFillGrid.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnFillGrid.BackColor = System.Drawing.SystemColors.Control;
+            this.btnFillGrid.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFillGrid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFillGrid.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFillGrid.Location = new System.Drawing.Point(451, 670);
+            this.btnFillGrid.Name = "btnFillGrid";
+            this.btnFillGrid.Size = new System.Drawing.Size(91, 33);
+            this.btnFillGrid.TabIndex = 8;
+            this.btnFillGrid.Text = "Fill Grid";
+            this.btnFillGrid.UseMnemonic = false;
+            this.btnFillGrid.UseVisualStyleBackColor = false;
+            this.btnFillGrid.Click += new System.EventHandler(this.btnFillGrid_Click);
+            // 
             // ctlAIInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.btnFillGrid);
             this.Controls.Add(this.lblPrediction);
             this.Controls.Add(this.lblTrainAs);
             this.Controls.Add(this.btnTrainingNumber);
@@ -307,5 +327,6 @@
         private System.Windows.Forms.ToolStripMenuItem tool8;
         private System.Windows.Forms.ToolStripMenuItem tool9;
         private System.Windows.Forms.ToolStripMenuItem toolNotANumber;
+        private System.Windows.Forms.Button btnFillGrid;
     }
 }

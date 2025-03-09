@@ -36,11 +36,28 @@ namespace HandwritingNeuralNetwork.AIModel
             _controller = (AIInputController)controller;
         }
 
+        public void SetPredictedNumber(int prediction)
+        {
+            if (prediction > 0) 
+            {
+                lblPrediction.Text = $"The number below is a {prediction}.";
+            }
+            else
+            {
+                lblPrediction.Text = "The symbol below is not a number.";
+            }
+        }
+
         #region ... Events ...
 
         private void btnClearGrid_Click(object sender, EventArgs e)
         {
             _grid.Clear();
+        }
+
+        private void btnFillGrid_Click(object sender, EventArgs e)
+        {
+            _grid.Fill();
         }
 
         private void btnAnalyze_Click(object sender, EventArgs e)
@@ -68,6 +85,7 @@ namespace HandwritingNeuralNetwork.AIModel
         {
             //Called when the user draws on the grid
         }
+
 
 
 

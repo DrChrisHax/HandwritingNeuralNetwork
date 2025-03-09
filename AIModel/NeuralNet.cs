@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HandwritingNeuralNetwork.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,9 +28,26 @@ namespace HandwritingNeuralNetwork.AIModel
             b1 = new float[hiddenSize];
             W2 = new float[outputSize, hiddenSize];
             b2 = new float[outputSize];
-
-            InitializeParameters(); //This will pull data from the DB if it exists
         }
+
+        public void InitializeParameters(NeuralNetworkModel model)
+        {
+            W1 = model.DeserializeMatrix(model.W1, _hiddenSize, _inputSize);
+            b1 = model.DeserializeVector(model.b1);
+            W2 = model.DeserializeMatrix(model.W2, _outputSize, _hiddenSize);
+            b2 = model.DeserializeVector(model.b2);
+        }
+
+        public void SaveParameters(NeuralNetworkModel model)
+        {
+            model.W1 = model.SerializeMatrix(W1);
+            model.b1 = model.SerializeVector(b1);
+            model.W2 = model.SerializeMatrix(W2); 
+            model.b2 = model.SerializeVector(b2);
+        }
+
+
+        #region Analyze & Train
 
         public float[] AnalyzeProbablities(bool[,] cells)
         {
@@ -140,10 +158,7 @@ namespace HandwritingNeuralNetwork.AIModel
 
         }
 
-        private void InitializeParameters()
-        {
-
-        }
+        #endregion
 
         #region Calculation
 
