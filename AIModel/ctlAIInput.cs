@@ -45,12 +45,12 @@ namespace HandwritingNeuralNetwork.AIModel
 
         private void btnAnalyze_Click(object sender, EventArgs e)
         {
-
+            _controller.Analyze(_grid.GetCells());
         }
 
         private void btnTrain_Click(object sender, EventArgs e)
         {
-
+            _controller.Train(_grid.GetCells(), Int32.Parse((string)btnTrainingNumber.Tag));
         }
 
         private void btnTrainingNumber_Click(object sender, EventArgs e)

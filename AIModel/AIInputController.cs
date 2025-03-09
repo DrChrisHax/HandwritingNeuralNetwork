@@ -17,9 +17,14 @@ namespace HandwritingNeuralNetwork.AIModel
             _ai = new NeuralNet(AppConstants.INPUT_NEURONS, AppConstants.HIDDEN_NEURONS, AppConstants.OUTPUT_NEURONS);
         }
 
-        public void Analyze()
+        public void Analyze(bool[,] cells)
         {
+            _ai.Analyze(cells);
+        }
 
+        public void Train(bool[,] cells, int target)
+        {
+            _ai.Train(cells, target);
         }
 
 

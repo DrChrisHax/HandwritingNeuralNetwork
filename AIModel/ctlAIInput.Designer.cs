@@ -35,8 +35,6 @@
             this.btnClearGrid = new System.Windows.Forms.Button();
             this.btnTrain = new System.Windows.Forms.Button();
             this.btnTrainingNumber = new System.Windows.Forms.Button();
-            this.lblTrainAs = new System.Windows.Forms.Label();
-            this.lblPrediction = new System.Windows.Forms.Label();
             this.cntxTrainingNumbers = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tool0 = new System.Windows.Forms.ToolStripMenuItem();
             this.tool1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +47,8 @@
             this.tool8 = new System.Windows.Forms.ToolStripMenuItem();
             this.tool9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolNotANumber = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblTrainAs = new System.Windows.Forms.Label();
+            this.lblPrediction = new System.Windows.Forms.Label();
             this.cntxTrainingNumbers.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -141,29 +141,11 @@
             this.btnTrainingNumber.Name = "btnTrainingNumber";
             this.btnTrainingNumber.Size = new System.Drawing.Size(33, 33);
             this.btnTrainingNumber.TabIndex = 5;
+            this.btnTrainingNumber.Tag = "0";
             this.btnTrainingNumber.Text = "0";
             this.btnTrainingNumber.UseMnemonic = false;
             this.btnTrainingNumber.UseVisualStyleBackColor = false;
             this.btnTrainingNumber.Click += new System.EventHandler(this.btnTrainingNumber_Click);
-            // 
-            // lblTrainAs
-            // 
-            this.lblTrainAs.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblTrainAs.AutoSize = true;
-            this.lblTrainAs.Location = new System.Drawing.Point(335, 250);
-            this.lblTrainAs.Name = "lblTrainAs";
-            this.lblTrainAs.Size = new System.Drawing.Size(112, 27);
-            this.lblTrainAs.TabIndex = 6;
-            this.lblTrainAs.Text = "Train As:";
-            // 
-            // lblPrediction
-            // 
-            this.lblPrediction.AutoSize = true;
-            this.lblPrediction.Location = new System.Drawing.Point(15, 117);
-            this.lblPrediction.Name = "lblPrediction";
-            this.lblPrediction.Size = new System.Drawing.Size(283, 27);
-            this.lblPrediction.TabIndex = 7;
-            this.lblPrediction.Text = "The number below is a 0";
             // 
             // cntxTrainingNumbers
             // 
@@ -260,6 +242,25 @@
             this.toolNotANumber.Size = new System.Drawing.Size(175, 24);
             this.toolNotANumber.Tag = "-1";
             this.toolNotANumber.Text = "Not A Number";
+            // 
+            // lblTrainAs
+            // 
+            this.lblTrainAs.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTrainAs.AutoSize = true;
+            this.lblTrainAs.Location = new System.Drawing.Point(335, 250);
+            this.lblTrainAs.Name = "lblTrainAs";
+            this.lblTrainAs.Size = new System.Drawing.Size(112, 27);
+            this.lblTrainAs.TabIndex = 6;
+            this.lblTrainAs.Text = "Train As:";
+            // 
+            // lblPrediction
+            // 
+            this.lblPrediction.AutoSize = true;
+            this.lblPrediction.Location = new System.Drawing.Point(15, 117);
+            this.lblPrediction.Name = "lblPrediction";
+            this.lblPrediction.Size = new System.Drawing.Size(283, 27);
+            this.lblPrediction.TabIndex = 7;
+            this.lblPrediction.Text = "The number below is a 0";
             // 
             // ctlAIInput
             // 
