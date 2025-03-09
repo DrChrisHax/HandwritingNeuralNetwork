@@ -23,6 +23,9 @@ namespace HandwritingNeuralNetwork.AIModel
             if(_model.ID_Model > 0)
             {
                 _ai.InitializeParameters(_model);
+            } else
+            {
+                _ai.SetRandomParameters(); //Used to give the ai some weights at the beginning
             }
 
         }

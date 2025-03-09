@@ -46,6 +46,40 @@ namespace HandwritingNeuralNetwork.AIModel
             model.b2 = model.SerializeVector(b2);
         }
 
+        public void SetRandomParameters()
+        {
+            Random rand = new Random();
+
+            //Weight 1
+            for (int i = 0; i < _hiddenSize; i++)
+            {
+                for (int j = 0; j < _inputSize; j++)
+                {
+                    W1[i, j] = (float)(rand.NextDouble() - 0.5); //random value between -0.5 and 0.5
+                }
+            }
+
+            //Weight 2
+            for (int i = 0; i < _outputSize; i++)
+            {
+                for (int j = 0; j < _hiddenSize; j++)
+                {
+                    W2[i, j] = (float)(rand.NextDouble() - 0.5);
+                }
+            }
+
+            //Give biases non zero values
+            for (int i = 0; i < _hiddenSize; i++)
+            {
+                b1[i] = 0.01f;
+            }
+            for (int i = 0; i < _outputSize; i++)
+            {
+                b2[i] = 0.01f;
+            }
+
+        }
+
 
         #region Analyze & Train
 
@@ -120,7 +154,7 @@ namespace HandwritingNeuralNetwork.AIModel
             float[] dZ1 = new float[_hiddenSize];
             for (int i = 0; i < _hiddenSize; i++)
             {
-                dZ1[i] = dHidden[i] * (dZ1[i] > 0 ? 1 : 0);
+                dZ1[i] = dHidden[i] * (hidden[i] > 0 ? 1 : 0);
             }
 
             //Finally compute gradients for the hidden layer weights (W1) and biases (b1)
