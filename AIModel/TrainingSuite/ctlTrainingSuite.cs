@@ -12,6 +12,10 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
 {
     public partial class ctlTrainingSuite : UserControl, IViewTrainingSuite
     {
+        private trainingSuiteController _controller;
+        private DrawingGrid _grid;
+
+
         public ctlTrainingSuite()
         {
             InitializeComponent();
@@ -19,12 +23,37 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
 
         public UserControl GetControlSurface()
         {
-            throw new NotImplementedException();
+            return this;
         }
 
         public void SetController(object controller)
         {
-            throw new NotImplementedException();
+            _controller = (trainingSuiteController)controller;
         }
+
+        #region Events
+
+        private void btnTrainingNumber_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTrain_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFillGrid_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClearGrid_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
     }
 }

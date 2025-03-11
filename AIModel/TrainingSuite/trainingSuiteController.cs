@@ -9,5 +9,14 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
 {
     public class trainingSuiteController : ControllerBase<IViewTrainingSuite>
     {
+
+
+        #region Controller Actions
+
+
+
+        #endregion 
+
+
     }
 }
