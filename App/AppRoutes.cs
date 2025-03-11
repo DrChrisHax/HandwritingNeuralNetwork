@@ -14,12 +14,12 @@ namespace HandwritingNeuralNetwork.App
             return new MainController(view);
         }
 
-        //public static IViewLogin ViewLogin { get; set; }
-        //public static LoginController Route_Login()
-        //{
-        //    var view = ViewLogin ?? new ctlLogin();
-        //    return new LoginController(view);
-        //}
+        public static IViewLogin ViewLogin { get; set; }
+        public static LoginController Route_Login()
+        {
+            var view = ViewLogin ?? new ctlLogin();
+            return new LoginController(view);
+        }
 
         public static IViewAIInput ViewAIInput { get; set; }
         public static AIInputController Route_AIInput()
