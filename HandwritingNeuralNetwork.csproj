@@ -92,6 +92,14 @@
     <Compile Include="AppMain\MainController.cs" />
     <Compile Include="App\AppRoutes.cs" />
     <Compile Include="App\AppMain.cs" />
+    <Compile Include="App\AppSession.cs" />
+    <Compile Include="Login\ctlLogin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Login\ctlLogin.Designer.cs">
+      <DependentUpon>ctlLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\IViewLogin.cs" />
     <Compile Include="Login\LoginController.cs" />
     <Compile Include="Models\model_base.cs" />
     <Compile Include="Models\NeuralNetworkModel.cs" />
@@ -118,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AppMain\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\ctlLogin.resx">
+      <DependentUpon>ctlLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
