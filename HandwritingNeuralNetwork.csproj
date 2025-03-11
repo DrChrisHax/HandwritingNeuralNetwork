@@ -157,6 +157,7 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="SQLScripts\Databases\HWNN.sql" />
+    <Content Include="SQLScripts\Tables\Neuron.sql" />
     <Content Include="SQLScripts\Tables\SystemUser.sql" />
   </ItemGroup>
   <ItemGroup>
