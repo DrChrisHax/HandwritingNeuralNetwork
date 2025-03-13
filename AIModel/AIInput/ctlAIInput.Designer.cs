@@ -126,6 +126,7 @@
             this.btnTrain.Text = "Train";
             this.btnTrain.UseMnemonic = false;
             this.btnTrain.UseVisualStyleBackColor = false;
+            this.btnTrain.Visible = false;
             this.btnTrain.Click += new System.EventHandler(this.btnTrain_Click);
             // 
             // btnTrainingNumber
@@ -146,6 +147,7 @@
             this.btnTrainingNumber.Text = "0";
             this.btnTrainingNumber.UseMnemonic = false;
             this.btnTrainingNumber.UseVisualStyleBackColor = false;
+            this.btnTrainingNumber.Visible = false;
             this.btnTrainingNumber.Click += new System.EventHandler(this.btnTrainingNumber_Click);
             // 
             // cntxTrainingNumbers
@@ -253,6 +255,7 @@
             this.lblTrainAs.Size = new System.Drawing.Size(112, 27);
             this.lblTrainAs.TabIndex = 6;
             this.lblTrainAs.Text = "Train As:";
+            this.lblTrainAs.Visible = false;
             // 
             // lblPrediction
             // 

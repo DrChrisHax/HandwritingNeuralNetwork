@@ -81,7 +81,7 @@
       <DependentUpon>ctlTrainingSuite.cs</DependentUpon>
     </Compile>
     <Compile Include="AIModel\TrainingSuite\IViewTrainingSuite.cs" />
-    <Compile Include="AIModel\TrainingSuite\trainingSuiteController.cs" />
+    <Compile Include="AIModel\TrainingSuite\TrainingSuiteController.cs" />
     <Compile Include="AppMain\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +179,7 @@
     <Content Include="SQLScripts\Databases\HWNN.sql" />
     <Content Include="SQLScripts\Tables\NeuralNetworkModel.sql" />
     <Content Include="SQLScripts\Tables\SystemUser.sql" />
+    <Content Include="SQLScripts\Tables\TrainingData.sql" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SQLScripts\Static Data\" />

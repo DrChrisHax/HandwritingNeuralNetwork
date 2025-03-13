@@ -1,4 +1,5 @@
 ﻿using HandwritingNeuralNetwork.AIModel;
+using HandwritingNeuralNetwork.AIModel.TrainingSuite;
 using HandwritingNeuralNetwork.App;
 using HandwritingNeuralNetwork.Login;
 using HandwritingNeuralNetwork.Models;
@@ -10,13 +11,16 @@ namespace HandwritingNeuralNetwork.AppMain
 {
     public class MainController : ControllerBase<IViewMain>
     {
-        private LoginController _loginController;
+        private LoginController _login;
         private AIInputController _aiInput;
+        private TrainingSuiteController _trainingSuite;
 
         public MainController(IViewMain view) : base(view)
         {
 
         }
+
+        #region Routing
 
         public void Display()
         {
@@ -25,24 +29,19 @@ namespace HandwritingNeuralNetwork.AppMain
             ShowLogin();
         }
 
-        private void ShowLogin()
+        public void ShowLogin()
         {
-            if(_loginController == null)
+            if(_login == null)
             {
-                _loginController = AppRoutes.Route_Login();
+                _login = AppRoutes.Route_Login();
 
-                _loginController.LoginSuccessful += OnLoginSuccessful;
+                _login.LoginSuccessful += OnLoginSuccessful;
             }
-            _view.DisplayChildView(_loginController.View.GetControlSurface());
+            AppSession.systemUser = null;
+            _view.DisplayChildView(_login.View.GetControlSurface());
         }
 
-        private void OnLoginSuccessful(object sender, EventArgs e)
-        {
-            //Enable navigation here
-            ShowAIInput();
-        }
-
-        private void ShowAIInput()
+        public void ShowAIInput()
         {
             if (_aiInput == null)
             {
@@ -50,5 +49,34 @@ namespace HandwritingNeuralNetwork.AppMain
             }
             _view.DisplayChildView(_aiInput.View.GetControlSurface());
         }
+
+        public void ShowTrainingSuite()
+        {
+            if (_trainingSuite == null)
+            {
+                _trainingSuite = AppRoutes.Route_TrainingSuite();
+            }
+            _view.DisplayChildView(_trainingSuite.View.GetControlSurface());
+        }
+
+        #endregion
+
+        #region Control Events
+
+        public void OnLoginSuccessful(object sender, EventArgs e)
+        {
+            View.EnableNavigation(true, AppSession.systemUser.IsAdmin);
+            ShowAIInput();
+        }
+
+        public void Logout()
+        {
+            AppSession.systemUser = null;
+            ShowLogin();
+        }
+
+
+        #endregion
+
     }
 }

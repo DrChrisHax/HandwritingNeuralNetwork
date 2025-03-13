@@ -12,7 +12,7 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
 {
     public partial class ctlTrainingSuite : UserControl, IViewTrainingSuite
     {
-        private trainingSuiteController _controller;
+        private TrainingSuiteController _controller;
         private DrawingGrid _grid;
 
 
@@ -28,7 +28,7 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
 
         public void SetController(object controller)
         {
-            _controller = (trainingSuiteController)controller;
+            _controller = (TrainingSuiteController)controller;
         }
 
         #region Events

@@ -31,8 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.MainPanel = new System.Windows.Forms.Panel();
             this.mnuNavigation = new System.Windows.Forms.MenuStrip();
-            this.analysisPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.trainingPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.navAnalysisPage = new System.Windows.Forms.ToolStripMenuItem();
+            this.navTrainingPage = new System.Windows.Forms.ToolStripMenuItem();
+            this.navLogout = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNavigation.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,27 +52,41 @@
             // mnuNavigation
             // 
             this.mnuNavigation.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.mnuNavigation.Enabled = false;
             this.mnuNavigation.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mnuNavigation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.analysisPageToolStripMenuItem,
-            this.trainingPageToolStripMenuItem});
+            this.navLogout,
+            this.navAnalysisPage,
+            this.navTrainingPage});
             this.mnuNavigation.Location = new System.Drawing.Point(0, 0);
             this.mnuNavigation.Name = "mnuNavigation";
-            this.mnuNavigation.Size = new System.Drawing.Size(1902, 28);
+            this.mnuNavigation.Size = new System.Drawing.Size(1902, 30);
             this.mnuNavigation.TabIndex = 1;
             this.mnuNavigation.Text = "menuStrip1";
             // 
-            // analysisPageToolStripMenuItem
+            // navAnalysisPage
             // 
-            this.analysisPageToolStripMenuItem.Name = "analysisPageToolStripMenuItem";
-            this.analysisPageToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
-            this.analysisPageToolStripMenuItem.Text = "Analysis Page";
+            this.navAnalysisPage.Name = "navAnalysisPage";
+            this.navAnalysisPage.Size = new System.Drawing.Size(112, 26);
+            this.navAnalysisPage.Text = "Analysis Page";
+            this.navAnalysisPage.Visible = false;
+            this.navAnalysisPage.Click += new System.EventHandler(this.navAnalysisPage_Click);
             // 
-            // trainingPageToolStripMenuItem
+            // navTrainingPage
             // 
-            this.trainingPageToolStripMenuItem.Name = "trainingPageToolStripMenuItem";
-            this.trainingPageToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
-            this.trainingPageToolStripMenuItem.Text = "Training Page";
+            this.navTrainingPage.Name = "navTrainingPage";
+            this.navTrainingPage.Size = new System.Drawing.Size(112, 26);
+            this.navTrainingPage.Text = "Training Page";
+            this.navTrainingPage.Visible = false;
+            this.navTrainingPage.Click += new System.EventHandler(this.navTrainingPage_Click);
+            // 
+            // navLogout
+            // 
+            this.navLogout.Name = "navLogout";
+            this.navLogout.Size = new System.Drawing.Size(70, 26);
+            this.navLogout.Text = "Logout";
+            this.navLogout.Visible = false;
+            this.navLogout.Click += new System.EventHandler(this.navLogOut_Click);
             // 
             // frmMain
             // 
@@ -86,7 +101,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hand Writing Neural Network";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frmMain_Load);
             this.mnuNavigation.ResumeLayout(false);
             this.mnuNavigation.PerformLayout();
             this.ResumeLayout(false);
@@ -98,8 +112,9 @@
 
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.MenuStrip mnuNavigation;
-        private System.Windows.Forms.ToolStripMenuItem analysisPageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem trainingPageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem navAnalysisPage;
+        private System.Windows.Forms.ToolStripMenuItem navTrainingPage;
+        private System.Windows.Forms.ToolStripMenuItem navLogout;
     }
 }
 

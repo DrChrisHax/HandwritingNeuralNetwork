@@ -48,7 +48,7 @@ namespace HandwritingNeuralNetwork.Login
             }
         }
 
-        public void Login()
+        public bool Login()
         {
             String username = View.UserName;
             String password = encryptPassword(View.Password + View.UserName);
@@ -65,7 +65,9 @@ namespace HandwritingNeuralNetwork.Login
                 AppSession.systemUser = su;
 
                 LoginSuccessful?.Invoke(this, EventArgs.Empty);
+                return true;
             }
+            return false;
         }
 
         #endregion
