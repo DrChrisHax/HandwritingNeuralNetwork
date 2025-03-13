@@ -35,5 +35,10 @@ namespace HandwritingNeuralNetwork
         {
             _controller = (MainController)controller;
         }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
