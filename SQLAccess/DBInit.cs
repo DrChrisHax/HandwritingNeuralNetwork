@@ -23,7 +23,7 @@ namespace HandwritingNeuralNetwork.SQLAccess
             //We will have another class for reading and writing
             CreateDB();
             CreateSchema();
-
+            StaticScripts();
         }
 
         private void CreateDB()
@@ -42,6 +42,24 @@ namespace HandwritingNeuralNetwork.SQLAccess
             if (files.Length == 0)
             {
                 Console.WriteLine("No SQL files found in: " + tablesDir);
+                return;
+            }
+
+            foreach (string file in files)
+            {
+                Console.WriteLine("Executing SQL file: " + file);
+                ExecuteSqlScript(_databaseConnectionString, file);
+            }
+        }
+
+        private void StaticScripts()
+        {
+            string scriptsDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SQLScripts", "StaticData");
+            string[] files = Directory.GetFiles(scriptsDir, "*.sql");
+
+            if (files.Length == 0)
+            {
+                Console.WriteLine("No SQL files found in: " + scriptsDir);
                 return;
             }
 

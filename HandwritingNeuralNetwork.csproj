@@ -196,7 +196,7 @@
       <DependentUpon>ctlTrainingSuite.cs</DependentUpon>
     </Compile>
     <Compile Include="AIModel\TrainingSuite\IViewTrainingSuite.cs" />
-    <Compile Include="AIModel\TrainingSuite\trainingSuiteController.cs" />
+    <Compile Include="AIModel\TrainingSuite\TrainingSuiteController.cs" />
     <Compile Include="AppMain\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,13 +290,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="Resources\NeuralNetIcon.ico" />
     <Content Include="SQLScripts\Databases\HWNN.sql" />
+<<<<<<< HEAD
     <Content Include="SQLScripts\Static Data\CreateSystemUserTable.sql" />
     <Content Include="SQLScripts\Static Data\PopulateUsers.sql" />
+=======
+    <Content Include="SQLScripts\StaticData\CreateAdminAccount.sql" />
+>>>>>>> c0e68780c48507218c649cbf04ddf66c6b05b5ec
     <Content Include="SQLScripts\Tables\NeuralNetworkModel.sql" />
     <Content Include="SQLScripts\Tables\SystemUser.sql" />
+    <Content Include="SQLScripts\Tables\TrainingData.sql" />
   </ItemGroup>
   <ItemGroup />
+<<<<<<< HEAD
   <ItemGroup />
   <ItemGroup Condition="$(VisualStudioVersion) == '17.0'">
     <Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -312,6 +319,8 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
+=======
+>>>>>>> c0e68780c48507218c649cbf04ddf66c6b05b5ec
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(ProjectDir)SQLScripts\*" "$(TargetDir)SQLScripts" /E /I /Y</PostBuildEvent>

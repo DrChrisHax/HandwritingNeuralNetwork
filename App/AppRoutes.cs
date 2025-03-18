@@ -1,4 +1,5 @@
 ﻿using HandwritingNeuralNetwork.AIModel;
+using HandwritingNeuralNetwork.AIModel.TrainingSuite;
 using HandwritingNeuralNetwork.AppMain;
 using HandwritingNeuralNetwork.Login;
 
@@ -26,6 +27,13 @@ namespace HandwritingNeuralNetwork.App
         {
             var view = ViewAIInput ?? new ctlAIInput();
             return new AIInputController(view);
+        }
+
+        public static IViewTrainingSuite ViewTrainingSuite { get; set; }
+        public static TrainingSuiteController Route_TrainingSuite()
+        {
+            var view = ViewTrainingSuite ?? new ctlTrainingSuite();
+            return new TrainingSuiteController(view);
         }
 
 

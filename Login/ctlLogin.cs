@@ -88,8 +88,11 @@ namespace HandwritingNeuralNetwork.Login
                 _controller.CreateAccount();
             } else
             {
-                _controller.Login();
-            }    
+                if (_controller.Login())
+                {
+                    Clear(); // Clear UI on succesful login
+                }
+            }         
         }
 
         private void lnkCreateAccount_Click(object sender, EventArgs e)
@@ -127,7 +130,12 @@ namespace HandwritingNeuralNetwork.Login
 
         #region Support Methods
 
-
+        private void Clear()
+        {
+            txtUsername.Text = "";
+            txtPassword.Text = "";
+            txtConfirmPassword.Text = "";
+        }
 
 
         #endregion

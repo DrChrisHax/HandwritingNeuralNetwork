@@ -108,7 +108,7 @@
             this.btnLogin.Location = new System.Drawing.Point(162, 196);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(212, 25);
+            this.btnLogin.Size = new System.Drawing.Size(212, 30);
             this.btnLogin.TabIndex = 7;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;

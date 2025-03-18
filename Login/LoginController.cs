@@ -3,11 +3,8 @@ using HandwritingNeuralNetwork.App;
 using HandwritingNeuralNetwork.Models;
 using HandwritingNeuralNetwork.Shared;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace HandwritingNeuralNetwork.Login
 {
@@ -48,7 +45,7 @@ namespace HandwritingNeuralNetwork.Login
             }
         }
 
-        public void Login()
+        public bool Login()
         {
             String username = View.UserName;
             String password = encryptPassword(View.Password + View.UserName);
@@ -65,7 +62,9 @@ namespace HandwritingNeuralNetwork.Login
                 AppSession.systemUser = su;
 
                 LoginSuccessful?.Invoke(this, EventArgs.Empty);
+                return true;
             }
+            return false;
         }
 
         #endregion

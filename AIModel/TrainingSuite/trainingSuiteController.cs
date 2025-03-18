@@ -7,9 +7,13 @@ using System.Threading.Tasks;
 
 namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
 {
-    public class trainingSuiteController : ControllerBase<IViewTrainingSuite>
+    public class TrainingSuiteController : ControllerBase<IViewTrainingSuite>
     {
 
+        public TrainingSuiteController(IViewTrainingSuite view) : base(view)
+        {
+
+        }
 
         #region Controller Actions
 
