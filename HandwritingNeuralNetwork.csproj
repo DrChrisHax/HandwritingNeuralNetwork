@@ -177,13 +177,12 @@
     <Content Include=".gitignore" />
     <Content Include="Resources\NeuralNetIcon.ico" />
     <Content Include="SQLScripts\Databases\HWNN.sql" />
+    <Content Include="SQLScripts\StaticData\CreateAdminAccount.sql" />
     <Content Include="SQLScripts\Tables\NeuralNetworkModel.sql" />
     <Content Include="SQLScripts\Tables\SystemUser.sql" />
     <Content Include="SQLScripts\Tables\TrainingData.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SQLScripts\Static Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(ProjectDir)SQLScripts\*" "$(TargetDir)SQLScripts" /E /I /Y</PostBuildEvent>
