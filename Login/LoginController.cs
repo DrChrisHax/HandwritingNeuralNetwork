@@ -25,9 +25,24 @@ namespace HandwritingNeuralNetwork.Login
             String username = View.UserName;
             String password = encryptPassword(View.Password + View.UserName);
 
+            // Doesn't allow empty usernames
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                View.ShowWarningMessage("This username cannot be blank.");
+                return;
+            }
+
+            // Doesn't allow empty passwords
+            if (string.IsNullOrWhiteSpace(View.Password)) // Check original input, not hashed password
+            {
+                View.ShowWarningMessage("The password cannot be blank.");
+                return;
+            }
+
             SystemUser su = new SystemUser();
             su.LoadByUsername(username);
 
+            
             if (su.ID_SystemUser > 0)
             {
                 View.ShowWarningMessage("This username is already taken.");
