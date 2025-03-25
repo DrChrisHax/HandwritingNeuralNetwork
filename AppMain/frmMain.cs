@@ -35,5 +35,32 @@ namespace HandwritingNeuralNetwork
         {
             _controller = (MainController)controller;
         }
+
+        public void EnableNavigation(bool enable, bool isAdmin)
+        {
+            mnuNavigation.Enabled = enable;
+
+            //User level tabs
+            navAnalysisPage.Visible = enable;
+            navLogout.Visible = enable;
+
+            //Admin level tabs
+            navTrainingPage.Visible = isAdmin;
+        }
+
+        private void navAnalysisPage_Click(object sender, EventArgs e)
+        {
+            _controller.ShowAIInput();
+        }
+
+        private void navTrainingPage_Click(object sender, EventArgs e)
+        {
+            _controller.ShowTrainingSuite();
+        }
+
+        private void navLogOut_Click(object sender, EventArgs e)
+        {
+            _controller.Logout();
+        }
     }
 }
