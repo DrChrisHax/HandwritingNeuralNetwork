@@ -33,8 +33,6 @@
             this.btnAnalyze = new System.Windows.Forms.Button();
             this.pnlDrawingGrid = new System.Windows.Forms.Panel();
             this.btnClearGrid = new System.Windows.Forms.Button();
-            this.btnTrain = new System.Windows.Forms.Button();
-            this.btnTrainingNumber = new System.Windows.Forms.Button();
             this.cntxTrainingNumbers = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tool0 = new System.Windows.Forms.ToolStripMenuItem();
             this.tool1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +45,6 @@
             this.tool8 = new System.Windows.Forms.ToolStripMenuItem();
             this.tool9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolNotANumber = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblTrainAs = new System.Windows.Forms.Label();
             this.lblPrediction = new System.Windows.Forms.Label();
             this.btnFillGrid = new System.Windows.Forms.Button();
             this.cntxTrainingNumbers.SuspendLayout();
@@ -110,46 +107,6 @@
             this.btnClearGrid.UseVisualStyleBackColor = false;
             this.btnClearGrid.Click += new System.EventHandler(this.btnClearGrid_Click);
             // 
-            // btnTrain
-            // 
-            this.btnTrain.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnTrain.AutoSize = true;
-            this.btnTrain.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnTrain.BackColor = System.Drawing.SystemColors.Control;
-            this.btnTrain.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTrain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTrain.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTrain.Location = new System.Drawing.Point(340, 292);
-            this.btnTrain.Name = "btnTrain";
-            this.btnTrain.Size = new System.Drawing.Size(68, 33);
-            this.btnTrain.TabIndex = 4;
-            this.btnTrain.Text = "Train";
-            this.btnTrain.UseMnemonic = false;
-            this.btnTrain.UseVisualStyleBackColor = false;
-            this.btnTrain.Visible = false;
-            this.btnTrain.Click += new System.EventHandler(this.btnTrain_Click);
-            // 
-            // btnTrainingNumber
-            // 
-            this.btnTrainingNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnTrainingNumber.AutoSize = true;
-            this.btnTrainingNumber.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnTrainingNumber.BackColor = System.Drawing.SystemColors.Control;
-            this.btnTrainingNumber.ContextMenuStrip = this.cntxTrainingNumbers;
-            this.btnTrainingNumber.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTrainingNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTrainingNumber.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTrainingNumber.Location = new System.Drawing.Point(453, 249);
-            this.btnTrainingNumber.Name = "btnTrainingNumber";
-            this.btnTrainingNumber.Size = new System.Drawing.Size(33, 33);
-            this.btnTrainingNumber.TabIndex = 5;
-            this.btnTrainingNumber.Tag = "0";
-            this.btnTrainingNumber.Text = "0";
-            this.btnTrainingNumber.UseMnemonic = false;
-            this.btnTrainingNumber.UseVisualStyleBackColor = false;
-            this.btnTrainingNumber.Visible = false;
-            this.btnTrainingNumber.Click += new System.EventHandler(this.btnTrainingNumber_Click);
-            // 
             // cntxTrainingNumbers
             // 
             this.cntxTrainingNumbers.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -167,7 +124,6 @@
             this.toolNotANumber});
             this.cntxTrainingNumbers.Name = "cntxTrainingNumbers";
             this.cntxTrainingNumbers.Size = new System.Drawing.Size(176, 268);
-            this.cntxTrainingNumbers.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.cntxTrainingNumbers_ItemClicked);
             // 
             // tool0
             // 
@@ -246,17 +202,6 @@
             this.toolNotANumber.Tag = "-1";
             this.toolNotANumber.Text = "Not A Number";
             // 
-            // lblTrainAs
-            // 
-            this.lblTrainAs.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblTrainAs.AutoSize = true;
-            this.lblTrainAs.Location = new System.Drawing.Point(335, 250);
-            this.lblTrainAs.Name = "lblTrainAs";
-            this.lblTrainAs.Size = new System.Drawing.Size(112, 27);
-            this.lblTrainAs.TabIndex = 6;
-            this.lblTrainAs.Text = "Train As:";
-            this.lblTrainAs.Visible = false;
-            // 
             // lblPrediction
             // 
             this.lblPrediction.AutoSize = true;
@@ -291,9 +236,6 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.btnFillGrid);
             this.Controls.Add(this.lblPrediction);
-            this.Controls.Add(this.lblTrainAs);
-            this.Controls.Add(this.btnTrainingNumber);
-            this.Controls.Add(this.btnTrain);
             this.Controls.Add(this.btnClearGrid);
             this.Controls.Add(this.pnlDrawingGrid);
             this.Controls.Add(this.btnAnalyze);
@@ -314,9 +256,6 @@
         private System.Windows.Forms.Button btnAnalyze;
         private System.Windows.Forms.Panel pnlDrawingGrid;
         private System.Windows.Forms.Button btnClearGrid;
-        private System.Windows.Forms.Button btnTrain;
-        private System.Windows.Forms.Button btnTrainingNumber;
-        private System.Windows.Forms.Label lblTrainAs;
         private System.Windows.Forms.Label lblPrediction;
         private System.Windows.Forms.ContextMenuStrip cntxTrainingNumbers;
         private System.Windows.Forms.ToolStripMenuItem tool0;

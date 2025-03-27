@@ -1,7 +1,10 @@
 ﻿using HandwritingNeuralNetwork.AIModel.AIModels;
 using HandwritingNeuralNetwork.Models;
+using HandwritingNeuralNetwork.Shared;
 using System;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace HandwritingNeuralNetwork.AIModel
 {
@@ -16,24 +19,68 @@ namespace HandwritingNeuralNetwork.AIModel
         private float[,] W2;
         private float[] b2;
 
-        public NeuralNet(int inputSize, int hiddenSize, int outputSize)
-        {
-            this._inputSize = inputSize;
-            this._hiddenSize = hiddenSize;
-            this._outputSize = outputSize;
+        private NeuralNetworkModel _model = new NeuralNetworkModel();
 
-            W1 = new float[hiddenSize, inputSize];
-            b1 = new float[hiddenSize];
-            W2 = new float[outputSize, hiddenSize];
-            b2 = new float[outputSize];
+        #region Main
+
+        public NeuralNet()
+        {
+            this._inputSize = AppConstants.INPUT_NEURONS;
+            this._hiddenSize = AppConstants.HIDDEN_NEURONS;
+            this._outputSize = AppConstants.OUTPUT_NEURONS;
+
+            W1 = new float[_hiddenSize, _inputSize];
+            b1 = new float[_hiddenSize];
+            W2 = new float[_outputSize, _hiddenSize];
+            b2 = new float[_outputSize];
         }
 
-        public void InitializeParameters(NeuralNetworkModel model)
+        public void InitializeParameters()
         {
-            W1 = model.DeserializeMatrix(model.W1, _hiddenSize, _inputSize);
-            b1 = model.DeserializeVector(model.b1);
-            W2 = model.DeserializeMatrix(model.W2, _outputSize, _hiddenSize);
-            b2 = model.DeserializeVector(model.b2);
+
+            _model.LoadRecordWhere($"NeuralNetworkModel.ModelName = '{AppConstants.NeuralNetworkName}'");
+
+            if (_model.ID_Model > 0)
+            {
+                //Load in weights
+                W1 = _model.DeserializeMatrix(_model.W1, _hiddenSize, _inputSize);
+                b1 = _model.DeserializeVector(_model.b1);
+                W2 = _model.DeserializeMatrix(_model.W2, _outputSize, _hiddenSize);
+                b2 = _model.DeserializeVector(_model.b2);
+            }
+            else
+            {
+                //Set random weights
+                Random rand = new Random();
+
+                //Weight 1
+                for (int i = 0; i < _hiddenSize; i++)
+                {
+                    for (int j = 0; j < _inputSize; j++)
+                    {
+                        W1[i, j] = (float)(rand.NextDouble() - 0.5); //random value between -0.5 and 0.5
+                    }
+                }
+
+                //Weight 2
+                for (int i = 0; i < _outputSize; i++)
+                {
+                    for (int j = 0; j < _hiddenSize; j++)
+                    {
+                        W2[i, j] = (float)(rand.NextDouble() - 0.5);
+                    }
+                }
+
+                //Give biases non zero values
+                for (int i = 0; i < _hiddenSize; i++)
+                {
+                    b1[i] = 0.01f;
+                }
+                for (int i = 0; i < _outputSize; i++)
+                {
+                    b2[i] = 0.01f;
+                }
+            }
         }
 
         public void SaveParameters(NeuralNetworkModel model)
@@ -44,40 +91,7 @@ namespace HandwritingNeuralNetwork.AIModel
             model.b2 = model.SerializeVector(b2);
         }
 
-        public void SetRandomParameters()
-        {
-            Random rand = new Random();
-
-            //Weight 1
-            for (int i = 0; i < _hiddenSize; i++)
-            {
-                for (int j = 0; j < _inputSize; j++)
-                {
-                    W1[i, j] = (float)(rand.NextDouble() - 0.5); //random value between -0.5 and 0.5
-                }
-            }
-
-            //Weight 2
-            for (int i = 0; i < _outputSize; i++)
-            {
-                for (int j = 0; j < _hiddenSize; j++)
-                {
-                    W2[i, j] = (float)(rand.NextDouble() - 0.5);
-                }
-            }
-
-            //Give biases non zero values
-            for (int i = 0; i < _hiddenSize; i++)
-            {
-                b1[i] = 0.01f;
-            }
-            for (int i = 0; i < _outputSize; i++)
-            {
-                b2[i] = 0.01f;
-            }
-
-        }
-
+        #endregion
 
         #region Analyze & Train
 
