@@ -14,19 +14,19 @@ namespace HandwritingNeuralNetwork.AIModel
             AIModelTable sql_vew = new AIModelTable();
             sql_vew.GetDeployed();
 
-            if(sql_vew.ModelName == "MINST v0.1")
-            {
-                _ai = new MINST();
-            }
-            else
+            if(sql_vew.ModelName == "HWNN v0.1")
             {
                 _ai = new NeuralNet();
             }
+            else
+            {
+                _ai = new MNIST();     
+            }
         }
 
-        public int Analyze(bool[,] cells)
+        public void Analyze(bool[,] cells)
         {
-            return _ai.Analyze(cells);
+            View.SetPredictedNumber(_ai.Analyze(cells));
         }
 
 
