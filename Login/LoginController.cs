@@ -55,6 +55,8 @@ namespace HandwritingNeuralNetwork.Login
                 su.IsAdmin = false;
                 su.AddRecord();
 
+                AppSession.systemUser = su;
+
                 //Login with the new account
                 LoginSuccessful?.Invoke(this, EventArgs.Empty);
             }
