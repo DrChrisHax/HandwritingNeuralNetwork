@@ -1,10 +1,11 @@
-﻿using HandwritingNeuralNetwork.Models;
+﻿using HandwritingNeuralNetwork.AIModel.AIModels;
+using HandwritingNeuralNetwork.Models;
 using System;
 using System.Linq;
 
 namespace HandwritingNeuralNetwork.AIModel
 {
-    public class NeuralNet
+    public class NeuralNet : AIModelBase
     {
         private int _inputSize;
         private int _hiddenSize;
@@ -80,7 +81,7 @@ namespace HandwritingNeuralNetwork.AIModel
 
         #region Analyze & Train
 
-        public float[] AnalyzeProbablities(bool[,] cells)
+        public override float[] AnalyzeProbablities(bool[,] cells)
         {
             float[] inputVector = Flatten(cells);
             float[] hiddenLayer = Activation(Add(MatrixMultiply(W1, inputVector), b1));
@@ -89,7 +90,7 @@ namespace HandwritingNeuralNetwork.AIModel
             return probabilities; //Returns a float of
         }
 
-        public int Analyze(bool[,] cells)
+        public override int Analyze(bool[,] cells)
         {
             float[] probabilities = AnalyzeProbablities(cells);
             int prediction = Array.IndexOf(probabilities, probabilities.Max());
@@ -98,7 +99,7 @@ namespace HandwritingNeuralNetwork.AIModel
             return (prediction == 10) ? -1 : prediction;
         }
 
-        public void Train(bool[,] cells, int target)
+        public override void Train(bool[,] cells, int target)
         {
             //1. Preprocess the input
             int targetIndex = (target == -1) ? 10 : target; //allows us to have an output for NaN
