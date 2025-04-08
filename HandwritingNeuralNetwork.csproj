@@ -95,6 +95,7 @@
     <Compile Include="AIModel\AIModels\AIModelBase.cs" />
     <Compile Include="AIModel\AIModels\MNIST.cs" />
     <Compile Include="AIModel\AIModels\NeuralNet.cs" />
+    <Compile Include="AIModel\AIModels\NeuralNet2.cs" />
     <Compile Include="AIModel\TrainingSuite\ctlTrainingSuite.cs">
       <SubType>UserControl</SubType>
     </Compile>
