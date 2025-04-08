@@ -18,9 +18,14 @@ namespace HandwritingNeuralNetwork.AIModel
             {
                 _ai = new NeuralNet();
             }
-            else
+            else if(sql_vew.ModelName == "MNIST v0.1")
             {
                 _ai = new MNIST();     
+            }
+            else
+            {
+                //Fall back
+                _ai = new NeuralNet();
             }
         }
 

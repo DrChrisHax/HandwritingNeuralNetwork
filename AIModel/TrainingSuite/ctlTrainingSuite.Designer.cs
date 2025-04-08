@@ -34,8 +34,6 @@
             this.btnFillGrid = new System.Windows.Forms.Button();
             this.lblTrainAs = new System.Windows.Forms.Label();
             this.btnTrainingNumber = new System.Windows.Forms.Button();
-            this.btnTrain = new System.Windows.Forms.Button();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.cntxTrainingNumbers = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tool0 = new System.Windows.Forms.ToolStripMenuItem();
             this.tool1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +46,8 @@
             this.tool8 = new System.Windows.Forms.ToolStripMenuItem();
             this.tool9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolNotANumber = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnTrain = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.cntxTrainingNumbers.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -126,35 +126,6 @@
             this.btnTrainingNumber.UseMnemonic = false;
             this.btnTrainingNumber.UseVisualStyleBackColor = false;
             this.btnTrainingNumber.Click += new System.EventHandler(this.btnTrainingNumber_Click);
-            // 
-            // btnTrain
-            // 
-            this.btnTrain.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnTrain.AutoSize = true;
-            this.btnTrain.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnTrain.BackColor = System.Drawing.SystemColors.Control;
-            this.btnTrain.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTrain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTrain.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTrain.Location = new System.Drawing.Point(340, 292);
-            this.btnTrain.Name = "btnTrain";
-            this.btnTrain.Size = new System.Drawing.Size(68, 33);
-            this.btnTrain.TabIndex = 12;
-            this.btnTrain.Text = "Train";
-            this.btnTrain.UseMnemonic = false;
-            this.btnTrain.UseVisualStyleBackColor = false;
-            this.btnTrain.Click += new System.EventHandler(this.btnTrain_Click);
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(15, 15);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(5);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(167, 27);
-            this.lblTitle.TabIndex = 13;
-            this.lblTitle.Text = "Training Suite";
             // 
             // cntxTrainingNumbers
             // 
@@ -251,10 +222,40 @@
             this.toolNotANumber.Tag = "-1";
             this.toolNotANumber.Text = "Not A Number";
             // 
+            // btnTrain
+            // 
+            this.btnTrain.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnTrain.AutoSize = true;
+            this.btnTrain.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnTrain.BackColor = System.Drawing.SystemColors.Control;
+            this.btnTrain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTrain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTrain.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrain.Location = new System.Drawing.Point(340, 292);
+            this.btnTrain.Name = "btnTrain";
+            this.btnTrain.Size = new System.Drawing.Size(68, 33);
+            this.btnTrain.TabIndex = 12;
+            this.btnTrain.Text = "Train";
+            this.btnTrain.UseMnemonic = false;
+            this.btnTrain.UseVisualStyleBackColor = false;
+            this.btnTrain.Click += new System.EventHandler(this.btnTrain_Click);
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(15, 15);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(5);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(167, 27);
+            this.lblTitle.TabIndex = 13;
+            this.lblTitle.Text = "Training Suite";
+            // 
             // ctlTrainingSuite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnTrain);
             this.Controls.Add(this.btnTrainingNumber);
@@ -263,7 +264,7 @@
             this.Controls.Add(this.btnClearGrid);
             this.Controls.Add(this.pnlDrawingGrid);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ctlTrainingSuite";
             this.Size = new System.Drawing.Size(1000, 1000);
             this.cntxTrainingNumbers.ResumeLayout(false);
