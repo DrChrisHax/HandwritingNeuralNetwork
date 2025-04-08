@@ -46,7 +46,7 @@
             this.tool8 = new System.Windows.Forms.ToolStripMenuItem();
             this.tool9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolNotANumber = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnTrain = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.cntxTrainingNumbers.SuspendLayout();
             this.SuspendLayout();
@@ -143,102 +143,103 @@
             this.tool9,
             this.toolNotANumber});
             this.cntxTrainingNumbers.Name = "cntxTrainingNumbers";
-            this.cntxTrainingNumbers.Size = new System.Drawing.Size(176, 268);
+            this.cntxTrainingNumbers.Size = new System.Drawing.Size(211, 296);
+            this.cntxTrainingNumbers.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.cntxTrainingNumbers_ItemClicked);
             // 
             // tool0
             // 
             this.tool0.Name = "tool0";
-            this.tool0.Size = new System.Drawing.Size(175, 24);
+            this.tool0.Size = new System.Drawing.Size(210, 24);
             this.tool0.Tag = "0";
             this.tool0.Text = "0";
             // 
             // tool1
             // 
             this.tool1.Name = "tool1";
-            this.tool1.Size = new System.Drawing.Size(175, 24);
+            this.tool1.Size = new System.Drawing.Size(210, 24);
             this.tool1.Tag = "1";
             this.tool1.Text = "1";
             // 
             // tool2
             // 
             this.tool2.Name = "tool2";
-            this.tool2.Size = new System.Drawing.Size(175, 24);
+            this.tool2.Size = new System.Drawing.Size(210, 24);
             this.tool2.Tag = "2";
             this.tool2.Text = "2";
             // 
             // tool3
             // 
             this.tool3.Name = "tool3";
-            this.tool3.Size = new System.Drawing.Size(175, 24);
+            this.tool3.Size = new System.Drawing.Size(210, 24);
             this.tool3.Tag = "3";
             this.tool3.Text = "3";
             // 
             // tool4
             // 
             this.tool4.Name = "tool4";
-            this.tool4.Size = new System.Drawing.Size(175, 24);
+            this.tool4.Size = new System.Drawing.Size(210, 24);
             this.tool4.Tag = "4";
             this.tool4.Text = "4";
             // 
             // tool5
             // 
             this.tool5.Name = "tool5";
-            this.tool5.Size = new System.Drawing.Size(175, 24);
+            this.tool5.Size = new System.Drawing.Size(210, 24);
             this.tool5.Tag = "5";
             this.tool5.Text = "5";
             // 
             // tool6
             // 
             this.tool6.Name = "tool6";
-            this.tool6.Size = new System.Drawing.Size(175, 24);
+            this.tool6.Size = new System.Drawing.Size(210, 24);
             this.tool6.Tag = "6";
             this.tool6.Text = "6";
             // 
             // tool7
             // 
             this.tool7.Name = "tool7";
-            this.tool7.Size = new System.Drawing.Size(175, 24);
+            this.tool7.Size = new System.Drawing.Size(210, 24);
             this.tool7.Tag = "7";
             this.tool7.Text = "7";
             // 
             // tool8
             // 
             this.tool8.Name = "tool8";
-            this.tool8.Size = new System.Drawing.Size(175, 24);
+            this.tool8.Size = new System.Drawing.Size(210, 24);
             this.tool8.Tag = "8";
             this.tool8.Text = "8";
             // 
             // tool9
             // 
             this.tool9.Name = "tool9";
-            this.tool9.Size = new System.Drawing.Size(175, 24);
+            this.tool9.Size = new System.Drawing.Size(210, 24);
             this.tool9.Tag = "9";
             this.tool9.Text = "9";
             // 
             // toolNotANumber
             // 
             this.toolNotANumber.Name = "toolNotANumber";
-            this.toolNotANumber.Size = new System.Drawing.Size(175, 24);
+            this.toolNotANumber.Size = new System.Drawing.Size(210, 24);
             this.toolNotANumber.Tag = "-1";
             this.toolNotANumber.Text = "Not A Number";
             // 
-            // btnTrain
+            // btnSave
             // 
-            this.btnTrain.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnTrain.AutoSize = true;
-            this.btnTrain.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnTrain.BackColor = System.Drawing.SystemColors.Control;
-            this.btnTrain.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTrain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTrain.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTrain.Location = new System.Drawing.Point(340, 292);
-            this.btnTrain.Name = "btnTrain";
-            this.btnTrain.Size = new System.Drawing.Size(68, 33);
-            this.btnTrain.TabIndex = 12;
-            this.btnTrain.Text = "Train";
-            this.btnTrain.UseMnemonic = false;
-            this.btnTrain.UseVisualStyleBackColor = false;
-            this.btnTrain.Click += new System.EventHandler(this.btnTrain_Click);
+            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSave.AutoSize = true;
+            this.btnSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSave.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(340, 292);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(66, 33);
+            this.btnSave.TabIndex = 12;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseMnemonic = false;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblTitle
             // 
@@ -257,7 +258,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.btnTrain);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnTrainingNumber);
             this.Controls.Add(this.lblTrainAs);
             this.Controls.Add(this.btnFillGrid);
@@ -280,7 +281,7 @@
         private System.Windows.Forms.Button btnFillGrid;
         private System.Windows.Forms.Label lblTrainAs;
         private System.Windows.Forms.Button btnTrainingNumber;
-        private System.Windows.Forms.Button btnTrain;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.ContextMenuStrip cntxTrainingNumbers;
         private System.Windows.Forms.ToolStripMenuItem tool0;
