@@ -17,6 +17,11 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
 
         #region Controller Actions
 
+        public void SaveGrid(bool[,] cells, int classification)
+        {
+            //Here we need to save the cells and classification in the db
+            //Then update the UI to display the count of each classification digit
+        }
 
 
         #endregion 

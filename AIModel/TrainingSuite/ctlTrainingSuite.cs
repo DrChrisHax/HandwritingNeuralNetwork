@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HandwritingNeuralNetwork.Shared;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,9 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
         public ctlTrainingSuite()
         {
             InitializeComponent();
+
+            _grid = new DrawingGrid();
+            ControlUtilities.PanelLoad(pnlDrawingGrid, _grid);
         }
 
         public UserControl GetControlSurface()
@@ -35,25 +39,42 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
 
         private void btnTrainingNumber_Click(object sender, EventArgs e)
         {
+            cntxTrainingNumbers.Show(MousePosition.X, MousePosition.Y);
+        }
+
+        private void cntxTrainingNumbers_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            String item = e.ClickedItem.Text;
+            btnTrainingNumber.Text = item;
+
+            if (string.Compare(item, "Not A Number") == 0)
+            {
+                btnTrainingNumber.Tag = -1;
+            } else
+            {
+                btnTrainingNumber.Tag = int.Parse(item);
+            }
 
         }
 
-        private void btnTrain_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-
+            int classification = (int)btnTrainingNumber.Tag;
+            _controller.SaveGrid(_grid.GetCells(), classification);
         }
 
         private void btnFillGrid_Click(object sender, EventArgs e)
         {
-
+            _grid.Fill();
         }
 
         private void btnClearGrid_Click(object sender, EventArgs e)
         {
-
+            _grid.Clear();
         }
 
         #endregion
 
+        
     }
 }
