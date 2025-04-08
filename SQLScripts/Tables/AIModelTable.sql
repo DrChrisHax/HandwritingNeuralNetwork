@@ -1,0 +1,23 @@
+﻿IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME like 'AIModelTable')
+BEGIN
+	CREATE TABLE AIModelTable (
+		ID_AIModelTable INT IDENTITY (1,1) NOT NULL PRIMARY KEY,
+		ModelName NVARCHAR(MAX) NOT NULL,
+		Trainable BIT NOT NULL DEFAULT 1,
+		Deployed BIT NOT NULL DEFAULT 0,
+		CreatedOn DATETIME NOT NULL DEFAULT GETDATE()
+		);
+END
+GO
+
+IF NOT EXISTS (
+	SELECT 1
+	FROM sys.indexes
+	WHERE name = 'UX_AIModelTable_Deployed' AND object_id = OBJECT_ID('AIModelTable')
+)
+BEGIN
+	CREATE UNIQUE INDEX UX_AIModelTable_Deployed
+	ON AIModelTable (Deployed)
+	WHERE Deployed = 1;
+END
+GO

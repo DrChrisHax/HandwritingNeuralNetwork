@@ -23,7 +23,6 @@ namespace HandwritingNeuralNetwork.AIModel
             _grid = new DrawingGrid();
             ControlUtilities.PanelLoad(pnlDrawingGrid, _grid);
 
-
         }
 
         public UserControl GetControlSurface()
@@ -65,30 +64,10 @@ namespace HandwritingNeuralNetwork.AIModel
             _controller.Analyze(_grid.GetCells());
         }
 
-        private void btnTrain_Click(object sender, EventArgs e)
-        {
-            _controller.Train(_grid.GetCells(), Int32.Parse((string)btnTrainingNumber.Tag));
-        }
-
-        private void btnTrainingNumber_Click(object sender, EventArgs e)
-        {
-            cntxTrainingNumbers.Show(new System.Drawing.Point(MousePosition.X, MousePosition.Y));
-        }
-
-        private void cntxTrainingNumbers_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            btnTrainingNumber.Text = e.ClickedItem.Text;
-            btnTrainingNumber.Tag = e.ClickedItem.Tag;
-        }
-
         private void pnlDrawingGrid_Paint(object sender, PaintEventArgs e)
         {
             //Called when the user draws on the grid
         }
-
-
-
-
 
 
         #endregion

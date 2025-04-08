@@ -13,6 +13,8 @@ namespace HandwritingNeuralNetwork.AIModel.AIModels
 
         public AIModelBase() { }
 
+        
+
         public abstract float[] AnalyzeProbablities(bool[,] cells);
         public abstract int Analyze(bool[,] cells);
         public abstract void Train(bool[,] cells, int target);
