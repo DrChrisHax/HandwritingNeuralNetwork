@@ -7,6 +7,10 @@ using System.Linq;
 
 namespace HandwritingNeuralNetwork.AIModel.AIModels
 {
+
+    /*
+     * DEPRECATED
+     */
     public class MNIST : AIModelBase
     {
 
@@ -105,6 +109,14 @@ namespace HandwritingNeuralNetwork.AIModel.AIModels
             return output;
         }
 
+        public override void SetBias(int layerIndex, int neuronIndex, double value)
+        {
+            throw new NotImplementedException();
+        }
 
+        public override void SetWeight(int matrixIndex, int rowIndex, int colIndex, double value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

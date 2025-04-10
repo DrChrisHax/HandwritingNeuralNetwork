@@ -8,6 +8,9 @@ using System.Runtime.InteropServices;
 
 namespace HandwritingNeuralNetwork.AIModel
 {
+    /*
+     * DEPRECATED
+     */
     public class NeuralNet : AIModelBase
     {
         private int _inputSize;
@@ -296,9 +299,17 @@ namespace HandwritingNeuralNetwork.AIModel
             return probabilities;
         }
 
-
-
         #endregion
+
+        public override void SetBias(int layerIndex, int neuronIndex, double value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void SetWeight(int matrixIndex, int rowIndex, int colIndex, double value)
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }
