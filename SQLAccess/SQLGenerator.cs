@@ -2,12 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace HandwritingNeuralNetwork.SQLAccess
 {
@@ -80,7 +76,7 @@ namespace HandwritingNeuralNetwork.SQLAccess
             {
                 if (oValue != null && !((DateTime)oValue).Equals(new DateTime()))
                 {
-                    // Manage for SQL datetime limits.
+                    //Manage for SQL datetime limits.
                     DateTime dateValue = (DateTime)oValue;
                     if (dateValue < Shared.Types.SQLMinDate())
                         dateValue = Shared.Types.SQLMinDate();
@@ -105,7 +101,7 @@ namespace HandwritingNeuralNetwork.SQLAccess
             {
                 strValue = oValue != null ? ((double)oValue).ToString(CultureInfo.InvariantCulture) : "NULL";
             }
-            else if (tp.Equals(typeof(float))) // Single in VB
+            else if (tp.Equals(typeof(float)))
             {
                 strValue = oValue != null ? ((float)oValue).ToString(CultureInfo.InvariantCulture) : "NULL";
             }
@@ -134,9 +130,9 @@ namespace HandwritingNeuralNetwork.SQLAccess
                     byte[] byteArray = (byte[])oValue;
                     int length = byteArray.Length;
                     StringBuilder sb = new StringBuilder((length * 3) - 1);
-                    sb.Append("0x"); // We need this
+                    sb.Append("0x"); //We need this
 
-                    if (byteArray.Length <= 5120) // 5120 bytes (5 KB)
+                    if (byteArray.Length <= 5120) //5120 bytes (5 KB)
                     {
                         sb.Append(BitConverter.ToString(byteArray));
                     }

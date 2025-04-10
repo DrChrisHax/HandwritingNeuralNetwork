@@ -19,6 +19,9 @@ namespace HandwritingNeuralNetwork.AIModel.AIModels
         public abstract int Analyze(bool[,] cells);
         public abstract void Train(bool[,] cells, int target);
 
+        public abstract void SetBias(int layerIndex, int neuronIndex, double value);
+        public abstract void SetWeight(int matrixIndex, int rowIndex, int colIndex, double value);
+
 
     }
 }

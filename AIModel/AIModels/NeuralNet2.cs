@@ -18,6 +18,9 @@ namespace HandwritingNeuralNetwork.AIModel
 
         private static Random rand = new Random();
 
+        public List<double[]> Biases => biases;
+        public List<double[,]> Weights => weights;
+
         #region Inheirited Functions
 
         public override float[] AnalyzeProbablities(bool[,] cells)
@@ -35,9 +38,17 @@ namespace HandwritingNeuralNetwork.AIModel
             throw new NotImplementedException();
         }
 
+        public override void SetBias(int layerIndex, int neuronIndex, double value)
+        {
+            biases[layerIndex][neuronIndex] = value;
+        }
+
+        public override void SetWeight(int matrixIndex, int rowIndex, int colIndex, double value)
+        {
+            weights[matrixIndex][rowIndex, colIndex] = value;
+        }
+
         #endregion
-
-
 
         #region Constructor
 
