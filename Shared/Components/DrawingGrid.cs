@@ -16,8 +16,8 @@ namespace HandwritingNeuralNetwork.AIModel
 
         public DrawingGrid()
         {
-            InitializeComponent(); // Required by the designer
-            this.DoubleBuffered = true; // Reduce flicker during redraw.
+            InitializeComponent(); //Required by the designer
+            this.DoubleBuffered = true; //Reduce flicker during redraw.
 
             _cells = new bool[GRID_ROWS, GRID_COLUMNS];
             this.Size = new Size(GRID_COLUMNS * CELL_SIZE, GRID_ROWS * CELL_SIZE);
@@ -25,7 +25,7 @@ namespace HandwritingNeuralNetwork.AIModel
 
         public void Clear()
         {
-            // Reset each cell to false.
+            //Reset each cell to false.
             for (int row = 0; row < GRID_ROWS; row++)
             {
                 for (int col = 0; col < GRID_COLUMNS; col++)
@@ -38,7 +38,7 @@ namespace HandwritingNeuralNetwork.AIModel
 
         public void Fill()
         {
-            // Reset each cell to true.
+            //Reset each cell to true.
             for (int row = 0; row < GRID_ROWS; row++)
             {
                 for (int col = 0; col < GRID_COLUMNS; col++)
@@ -61,12 +61,12 @@ namespace HandwritingNeuralNetwork.AIModel
                 {
                     Rectangle rect = new Rectangle(col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE);
                     g.FillRectangle(_cells[row, col] ? Brushes.Black : Brushes.White, rect);
-                    g.DrawRectangle(Pens.Gray, rect); // Draw grid lines.
+                    g.DrawRectangle(Pens.Gray, rect); //Draw grid lines.
                 }
             }
         }
 
-        // Helper method to set a cell to drawn (true) if it's not already.
+        //Helper method to set a cell to drawn (true) if it's not already.
         private void SetCellAt(int x, int y)
         {
             int col = x / CELL_SIZE;
@@ -82,13 +82,33 @@ namespace HandwritingNeuralNetwork.AIModel
             }
         }
 
+        private void ClearCellAt(int x, int y)
+        {
+            int col = x / CELL_SIZE;
+            int row = y / CELL_SIZE;
+
+            if(row >= 0 && row < GRID_ROWS && col >= 0 && col < GRID_COLUMNS)
+            {
+                if (_cells[row,col])
+                {
+                    _cells[row,col] = false;
+                    Invalidate(new Rectangle(col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE));
+                }
+            }
+        }
+
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
 
-            if (e.Button == MouseButtons.Left)
+            switch (e.Button)
             {
-                SetCellAt(e.X, e.Y);
+                case MouseButtons.Left:
+                    SetCellAt(e.X, e.Y); //Fill Cell
+                    break;
+                case MouseButtons.Right:
+                    ClearCellAt(e.X, e.Y); //Clear Cell
+                    break;
             }
         }
 
@@ -96,10 +116,14 @@ namespace HandwritingNeuralNetwork.AIModel
         {
             base.OnMouseMove(e);
 
-            // While dragging with the left mouse button, draw on the grid.
-            if (e.Button == MouseButtons.Left)
+            switch (e.Button)
             {
-                SetCellAt(e.X, e.Y);
+                case MouseButtons.Left:
+                    SetCellAt(e.X, e.Y); //Fill Cell
+                    break;
+                case MouseButtons.Right:
+                    ClearCellAt(e.X, e.Y); //Clear Cell
+                    break;
             }
         }
     }
