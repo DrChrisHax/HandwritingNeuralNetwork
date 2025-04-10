@@ -1,5 +1,5 @@
 ﻿using System;
-using System.ComponentModel;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -12,7 +12,10 @@ namespace HandwritingNeuralNetwork.AIModel
         private const int CELL_SIZE = 5;
         private bool[,] _cells;
 
-        public bool[,] GetCells() {  return _cells; }
+        private int _brushSize = 2;
+        private Point? _lastPoint = null;
+
+        public bool[,] GetCells() { return _cells; }
 
         public DrawingGrid()
         {
@@ -49,6 +52,11 @@ namespace HandwritingNeuralNetwork.AIModel
             Invalidate(); //Force the control to redraw.
         }
 
+        public void SetBrushSize(int newSize)
+        {
+            _brushSize = newSize;
+        }
+
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -66,18 +74,23 @@ namespace HandwritingNeuralNetwork.AIModel
             }
         }
 
-        //Helper method to set a cell to drawn (true) if it's not already.
         private void SetCellAt(int x, int y)
         {
             int col = x / CELL_SIZE;
             int row = y / CELL_SIZE;
 
-            if (row >= 0 && row < GRID_ROWS && col >= 0 && col < GRID_COLUMNS)
+            for (int r = row; r < row + _brushSize; r++)
             {
-                if (!_cells[row, col])
+                for (int c = col; c < col + _brushSize; c++)
                 {
-                    _cells[row, col] = true;
-                    Invalidate(new Rectangle(col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE));
+                    if (r >= 0 && r < GRID_ROWS && c >= 0 && c < GRID_COLUMNS)
+                    {
+                        if (!_cells[r, c])
+                        {
+                            _cells[r, c] = true;
+                            Invalidate(new Rectangle(c * CELL_SIZE, r * CELL_SIZE, CELL_SIZE, CELL_SIZE));
+                        }
+                    }
                 }
             }
         }
@@ -87,12 +100,18 @@ namespace HandwritingNeuralNetwork.AIModel
             int col = x / CELL_SIZE;
             int row = y / CELL_SIZE;
 
-            if(row >= 0 && row < GRID_ROWS && col >= 0 && col < GRID_COLUMNS)
+            for (int r = row; r < row + _brushSize; r++)
             {
-                if (_cells[row,col])
+                for (int c = col; c < col + _brushSize; c++)
                 {
-                    _cells[row,col] = false;
-                    Invalidate(new Rectangle(col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE));
+                    if (r >= 0 && r < GRID_ROWS && c >= 0 && c < GRID_COLUMNS)
+                    {
+                        if (_cells[r, c])
+                        {
+                            _cells[r, c] = false;
+                            Invalidate(new Rectangle(c * CELL_SIZE, r * CELL_SIZE, CELL_SIZE, CELL_SIZE));
+                        }
+                    }
                 }
             }
         }
@@ -100,6 +119,8 @@ namespace HandwritingNeuralNetwork.AIModel
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
+
+            _lastPoint = e.Location;
 
             switch (e.Button)
             {
@@ -116,14 +137,55 @@ namespace HandwritingNeuralNetwork.AIModel
         {
             base.OnMouseMove(e);
 
-            switch (e.Button)
+            if(e.Button != MouseButtons.None)
             {
-                case MouseButtons.Left:
-                    SetCellAt(e.X, e.Y); //Fill Cell
+                if(_lastPoint.HasValue)
+                {
+                    foreach (Point p in GetPointsOnLine(_lastPoint.Value, e.Location))
+                    {
+                        switch (e.Button)
+                        {
+                            case MouseButtons.Left:
+                                SetCellAt(e.X, e.Y); //Fill Cell
+                                break;
+                            case MouseButtons.Right:
+                                ClearCellAt(e.X, e.Y); //Clear Cell
+                                break;
+                        }
+                    }
+                }
+                _lastPoint = e.Location;
+            }    
+        }
+
+        private IEnumerable<Point> GetPointsOnLine(Point start, Point end)
+        {
+            int x0 = start.X;
+            int y0 = start.Y;
+            int x1 = end.X;
+            int y1 = end.Y;
+            int dx = Math.Abs(x1 - x0);
+            int dy = Math.Abs(y1 - y0);
+            int sx = x0 < x1 ? 1 : -1;
+            int sy = y0 < y1 ? 1 : -1;
+            int err = dx - dy;
+
+            while (true)
+            {
+                yield return new Point(x0, y0);
+                if (x0 == x1 && y0 == y1)
                     break;
-                case MouseButtons.Right:
-                    ClearCellAt(e.X, e.Y); //Clear Cell
-                    break;
+                int e2 = 2 * err;
+                if (e2 > -dy)
+                {
+                    err -= dy;
+                    x0 += sx;
+                }
+                if (e2 < dx)
+                {
+                    err += dx;
+                    y0 += sy;
+                }
             }
         }
     }
