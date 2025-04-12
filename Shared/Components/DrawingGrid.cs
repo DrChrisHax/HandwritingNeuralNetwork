@@ -17,6 +17,12 @@ namespace HandwritingNeuralNetwork.AIModel
 
         public bool[,] GetCells() { return _cells; }
 
+        public void SetCells(bool[,] cells)
+        {
+            _cells = cells;
+            Invalidate(); //Force the control to redraw.
+        }
+
         public DrawingGrid()
         {
             InitializeComponent(); //Required by the designer
