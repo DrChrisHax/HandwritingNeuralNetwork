@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing.Imaging;
@@ -152,6 +153,23 @@ namespace HandwritingNeuralNetwork.Models
                 Debug.Print(ex.ToString());
                 return false;
             }
+        }
+
+        public DataTable ExecuteSQLAsDataTable(string sql)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(sql, connection))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        dt.Load(reader);
+                    }
+                }
+            }
+            return dt;
         }
 
         private void LoadPropertiesFromReader(SqlDataReader reader)

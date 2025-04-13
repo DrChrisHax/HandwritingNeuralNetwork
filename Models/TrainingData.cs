@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -10,7 +11,7 @@ namespace HandwritingNeuralNetwork.Models
         // Public member properties 
         public int ID_TrainingData { get; set; }
         public string Input { get; set; }
-        public string DataLabel { get; set; }
+        public string DataLabel { get; set; } //0-9 or n for not a number 
         public DateTime LastUpdated { get; set; }
 
         //Parameterless constructor
@@ -27,6 +28,36 @@ namespace HandwritingNeuralNetwork.Models
         {
             //Implementation will be added in the appropriate location.
             throw new NotImplementedException();
+        }
+
+        public int[] TrainingDataCount()
+        {
+            string sql = "SELECT DataLabel, COUNT(*) AS RecordCount FROM TrainingData GROUP BY DataLabel";
+
+            DataTable dt = ExecuteSQLAsDataTable(sql);
+
+            int[] counts = new int[11];
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string label = row["DataLabel"].ToString().Trim().ToLower();
+                int recordCount = Convert.ToInt32(row["RecordCount"]);
+
+                if (label == "n")
+                {
+                    counts[10] = recordCount;
+                }
+                else if (int.TryParse(label, out int digit) && digit >= 0 && digit <= 9)
+                {
+                    counts[digit] = recordCount;
+                }
+                else
+                {
+                    throw new Exception($"Invaild Data Label Returned: {label}");
+                }
+            }
+
+            return counts;
         }
 
        
