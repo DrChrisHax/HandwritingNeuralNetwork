@@ -18,6 +18,7 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
         {
             _mgr = new TrainingData();
             _dataCounts = _mgr.TrainingDataCount();
+            //List<TrainingData> lst = _mgr.SelectAll(); //Use this line when you need to load in all the training data
             //_view.PopulateTraininigDataCounts(_dataCounts);
         }
 

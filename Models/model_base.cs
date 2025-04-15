@@ -1,4 +1,5 @@
 ﻿using HandwritingNeuralNetwork.SQLAccess;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -89,6 +90,40 @@ namespace HandwritingNeuralNetwork.Models
                     }
                 }
             }
+        }
+
+        public List<model_base> SelectWhereOrderBy(string where = "", string orderBy = "")
+        {
+            List<model_base> results = new List<model_base>();
+
+            try
+            {
+                string sql = new SQLGenerator(this).GetSQLSelectWOB(where, orderBy);
+                DataTable dt = ExecuteSQLAsDataTable(sql);
+                results = DataTableToList(dt);
+            }
+            catch (Exception ex)
+            {
+                Debug.Print(ex.ToString());
+            }
+
+            return results;
+        }
+
+        private List<model_base> DataTableToList(DataTable dt)
+        {
+            List<model_base> list = new List<model_base>();
+
+            if (dt != null)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    model_base instance = (model_base)Activator.CreateInstance(this.GetType());
+                    instance.LoadPropertiesFromDataRow(dr);
+                    list.Add(instance);
+                }
+            }
+            return list;
         }
 
         public bool AddRecord()
@@ -197,6 +232,20 @@ namespace HandwritingNeuralNetwork.Models
             }
         }
 
+        public void LoadPropertiesFromDataRow(DataRow dr)
+        {
+            PropertyInfo[] properties = GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            foreach (PropertyInfo property in properties)
+            {
+                if (property.CanWrite && dr.Table.Columns.Contains(property.Name))
+                {
+                    object value = dr[property.Name];
+                    if (value is DBNull) value = null;
+                    property.SetValue(this, value);
+                }
+            }
+        }
+
         public PropertyInfo PrimaryKeyProperty()
         {
             var properties = GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
@@ -241,6 +290,7 @@ namespace HandwritingNeuralNetwork.Models
             }
             return className;
         }
+
     }
 
     #region Data Reader Extensions

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 
@@ -24,10 +25,10 @@ namespace HandwritingNeuralNetwork.Models
         //Loads all records from the TrainingData table.
         
 
-        public List<TrainingData> LoadAll()
+        public List<TrainingData> SelectAll()
         {
-            //Implementation will be added in the appropriate location.
-            throw new NotImplementedException();
+            List<model_base> baseResults = this.SelectWhereOrderBy("", "");
+            return baseResults.Cast<TrainingData>().ToList();
         }
 
         public int[] TrainingDataCount()

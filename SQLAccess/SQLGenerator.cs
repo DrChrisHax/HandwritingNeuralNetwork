@@ -34,13 +34,31 @@ namespace HandwritingNeuralNetwork.SQLAccess
         {
             string sClause = string.Empty;
             List<PropertyInfo> lstProps = _mdl.Model_DataPropertiesWithoutPKOrRefs();
-            foreach(PropertyInfo p in lstProps)
+            foreach (PropertyInfo p in lstProps)
             {
                 sClause = AppendCommaSeperatedString(sClause, $"[{p.Name}] = {PropertyToValidValue(_mdl, p)}");
             }
 
             return $"UPDATE {_mdl.EntityName()} SET {sClause} WHERE {_mdl.EntityName()}.{_mdl.PrimaryKeyProperty().Name} = " +
                    $"{PropertyToValidValue(_mdl, _mdl.PrimaryKeyProperty())}";
+        }
+
+        public string GetSQLSelectWOB(string where, string orderBy)
+        {
+            string tableName = _mdl.EntityName();
+            string sql = $"SELECT * FROM {tableName}";
+
+            if (!string.IsNullOrWhiteSpace(where))
+            {
+                sql += $" WHERE {where}";
+            }
+
+            if (!string.IsNullOrWhiteSpace(orderBy))
+            {
+                sql += $" ORDER BY {orderBy}";
+            }
+
+            return sql;
         }
 
         private string AppendCommaSeperatedString(string val, string append)
