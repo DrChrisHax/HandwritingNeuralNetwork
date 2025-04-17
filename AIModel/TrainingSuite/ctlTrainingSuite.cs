@@ -24,6 +24,8 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
 
             _grid = new DrawingGrid();
             ControlUtilities.PanelLoad(pnlDrawingGrid, _grid);
+
+            btnTrainingNumber.Tag = 0; //Prevents errors
         }
 
         public UserControl GetControlSurface()

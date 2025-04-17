@@ -44,7 +44,7 @@ namespace HandwritingNeuralNetwork.Models
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                string sql = "SELECT * FROM NNBiases WHERE ModelId = @ModelId";
+                string sql = "SELECT * FROM NNBias WHERE ModelId = @ModelId";
                 using (SqlCommand cmd = new SqlCommand(sql, connection))
                 {
                     cmd.Parameters.AddWithValue("@ModelId", ModelId);
@@ -69,7 +69,7 @@ namespace HandwritingNeuralNetwork.Models
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                string sql = "SELECT * FROM NeuralNetworkWeights WHERE ModelId = @ModelId";
+                string sql = "SELECT * FROM NNWeight WHERE ModelId = @ModelId";
                 using (SqlCommand cmd = new SqlCommand(sql, connection))
                 {
                     cmd.Parameters.AddWithValue("@ModelId", ModelId);
@@ -107,12 +107,12 @@ namespace HandwritingNeuralNetwork.Models
                 {
                     connection.Open();
                     //First, remove any previously saved parameters for this model.
-                    using (SqlCommand cmd = new SqlCommand("DELETE FROM NNBiases WHERE ModelId = @ModelId", connection))
+                    using (SqlCommand cmd = new SqlCommand("DELETE FROM NNBias WHERE ModelId = @ModelId", connection))
                     {
                         cmd.Parameters.AddWithValue("@ModelId", ModelId);
                         cmd.ExecuteNonQuery();
                     }
-                    using (SqlCommand cmd = new SqlCommand("DELETE FROM NeuralNetworkWeights WHERE ModelId = @ModelId", connection))
+                    using (SqlCommand cmd = new SqlCommand("DELETE FROM NNWeight WHERE ModelId = @ModelId", connection))
                     {
                         cmd.Parameters.AddWithValue("@ModelId", ModelId);
                         cmd.ExecuteNonQuery();
@@ -126,7 +126,7 @@ namespace HandwritingNeuralNetwork.Models
                         for (int neuron = 0; neuron < biasArray.Length; neuron++)
                         {
                             using (SqlCommand cmd = new SqlCommand(
-                                "INSERT INTO NNBiases (ModelId, LayerIndex, NeuronIndex, BiasValue) " +
+                                "INSERT INTO NNBias (ModelId, LayerIndex, NeuronIndex, BiasValue) " +
                                 "VALUES (@ModelId, @LayerIndex, @NeuronIndex, @BiasValue)", connection))
                             {
                                 cmd.Parameters.AddWithValue("@ModelId", ModelId);
@@ -154,7 +154,7 @@ namespace HandwritingNeuralNetwork.Models
                             for (int j = 0; j < cols; j++)
                             {
                                 using (SqlCommand cmd = new SqlCommand(
-                                    "INSERT INTO NeuralNetworkWeights (ModelId, FromLayerIndex, ToLayerIndex, RowIndex, ColIndex, WeightValue) " +
+                                    "INSERT INTO NNWeight (ModelId, FromLayerIndex, ToLayerIndex, RowIndex, ColIndex, WeightValue) " +
                                     "VALUES (@ModelId, @FromLayerIndex, @ToLayerIndex, @RowIndex, @ColIndex, @WeightValue)", connection))
                                 {
                                     cmd.Parameters.AddWithValue("@ModelId", ModelId);

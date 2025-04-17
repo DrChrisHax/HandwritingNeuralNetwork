@@ -11,8 +11,9 @@ namespace HandwritingNeuralNetwork.Models
     {
         public int ID_TrainingData16 { get; set; }
         public byte[] InputData { get; set; }  //32‑byte packed 16×16 grid
-        public char DataLabel { get; set; }  //'0'–'9' or 'n'
+        public string DataLabel { get; set; }  //'0'–'9' or 'n'
         public DateTime LastUpdated { get; set; }
+        
 
         public TrainingData16() { }
         public TrainingData16(int id) : base(id) { }
@@ -22,7 +23,7 @@ namespace HandwritingNeuralNetwork.Models
 
         public int[] TrainingDataCount()
         {
-            string sql = "SELECT DataLabel, COUNT(*) AS RecordCount FROM TrainingData GROUP BY DataLabel";
+            string sql = "SELECT DataLabel, COUNT(*) AS RecordCount FROM TrainingData16 GROUP BY DataLabel";
 
             DataTable dt = ExecuteSQLAsDataTable(sql);
 

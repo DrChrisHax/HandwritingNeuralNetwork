@@ -11,27 +11,14 @@ namespace HandwritingNeuralNetwork.AIModel
 
         public AIInputController(IViewAIInput view) : base(view)
         {
-            AIModelTable sql_vew = new AIModelTable();
-            sql_vew.GetDeployed();
+            
 
-            if(sql_vew.ModelName == "HWNN v0.1")
-            {
-                _ai = new NeuralNet();
-            }
-            else if(sql_vew.ModelName == "MNIST v0.1")
-            {
-                _ai = new MNIST();     
-            }
-            else
-            {
-                //Fall back
-                _ai = new NeuralNet();
-            }
+
         }
 
         public void Analyze(bool[,] cells)
         {
-            View.SetPredictedNumber(_ai.Analyze(cells));
+
         }
 
 

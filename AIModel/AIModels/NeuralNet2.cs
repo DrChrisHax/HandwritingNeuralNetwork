@@ -25,12 +25,28 @@ namespace HandwritingNeuralNetwork.AIModel
 
         public override float[] AnalyzeProbablities(bool[,] cells)
         {
-            throw new NotImplementedException();
+            //Flatten 16×16 bool grid to length‑256 double array
+            double[] input = new double[256];
+            for (int r = 0; r < 16; r++)
+                for (int c = 0; c < 16; c++)
+                    input[r * 16 + c] = cells[r, c] ? 1.0 : 0.0;
+
+            //Run feed‑forward
+            double[] output = FeedForward(input);
+
+            //Convert to floats
+            return output.Select(d => (float)d).ToArray();
         }
 
         public override int Analyze(bool[,] cells)
         {
-            throw new NotImplementedException();
+            var probs = AnalyzeProbablities(cells);
+            //pick the index of the highest probability
+            int idx = probs.Select((v, i) => (value: v, index: i))
+                           .Aggregate((a, b) => a.value > b.value ? a : b)
+                           .index;
+            //index 0–9 => digit; index 10 => not‑a‑number
+            return idx == 10 ? -1 : idx;
         }
 
         public override void Train(bool[,] cells, int target)
