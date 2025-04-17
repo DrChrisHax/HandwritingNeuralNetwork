@@ -79,8 +79,28 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
             _grid.Clear();
         }
 
+
         #endregion
 
-        
+        public void _view.PopulateTraininigDataCounts(int[] counts)
+        {
+            if (counts == null || counts.Length != 11)
+                throw new ArgumentException("Expected exactly 11 counts.", nameof(counts));
+
+            // build a '$'‑bar for each count…
+            index1.Text = string('$', counts[0]);
+            index2.Text = string('$', counts[1]);
+            index3.Text = string('$', counts[2]);
+            index4.Text = string('$', counts[3]);
+            index5.Text = string('$', counts[4]);
+            index6.Text = string('$', counts[5]);
+            index7.Text = string('$', counts[6]);
+            index8.Text = string('$', counts[7]);
+            index9.Text = string('$', counts[8]);
+            index10.Text = string('$', counts[9]);
+            index11.Text = string('$', counts[10]);
+
+        }
+
     }
 }
