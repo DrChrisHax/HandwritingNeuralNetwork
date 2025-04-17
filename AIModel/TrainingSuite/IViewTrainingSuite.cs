@@ -9,5 +9,6 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
 {
     public interface IViewTrainingSuite : IViewControlBase
     {
+        _view.PopulateTraininigDataCounts(int[] counts);
     }
 }

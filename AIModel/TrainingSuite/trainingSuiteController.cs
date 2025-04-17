@@ -53,7 +53,7 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
             {
                 _dataCounts[classification]++;
             }
-            //_view.PopulateTraininigDataCounts(_dataCounts);
+            _view.PopulateTraininigDataCounts(_dataCounts);
         }
 
 

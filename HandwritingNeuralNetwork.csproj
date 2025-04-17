@@ -130,7 +130,6 @@
     <Compile Include="Models\NNModel.cs" />
     <Compile Include="Models\NNWeight.cs" />
     <Compile Include="Models\SystemUser.cs" />
-    <Compile Include="Models\TrainingData.cs" />
     <Compile Include="Models\TrainingData16.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\AppConstants.cs" />
