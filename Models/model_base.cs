@@ -1,7 +1,9 @@
 ﻿using HandwritingNeuralNetwork.SQLAccess;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing.Imaging;
@@ -12,7 +14,7 @@ namespace HandwritingNeuralNetwork.Models
 {
     public abstract class model_base : INotifyPropertyChanged
     {
-        private readonly string _connectionString = $"Server=localhost\\HWNN;Database=HWNN;User Id=sa;Password=abc123!@#;";
+        protected readonly string _connectionString = $"Server=localhost\\HWNN;Database=HWNN;User Id=sa;Password=abc123!@#;";
 
         #region INotifyPropertyChanged Members
 
@@ -90,6 +92,40 @@ namespace HandwritingNeuralNetwork.Models
             }
         }
 
+        public List<model_base> SelectWhereOrderBy(string where = "", string orderBy = "")
+        {
+            List<model_base> results = new List<model_base>();
+
+            try
+            {
+                string sql = new SQLGenerator(this).GetSQLSelectWOB(where, orderBy);
+                DataTable dt = ExecuteSQLAsDataTable(sql);
+                results = DataTableToList(dt);
+            }
+            catch (Exception ex)
+            {
+                Debug.Print(ex.ToString());
+            }
+
+            return results;
+        }
+
+        private List<model_base> DataTableToList(DataTable dt)
+        {
+            List<model_base> list = new List<model_base>();
+
+            if (dt != null)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    model_base instance = (model_base)Activator.CreateInstance(this.GetType());
+                    instance.LoadPropertiesFromDataRow(dr);
+                    list.Add(instance);
+                }
+            }
+            return list;
+        }
+
         public bool AddRecord()
         {
             string sql = new SQLGenerator(this).GetSQLInsertStatement();
@@ -154,6 +190,23 @@ namespace HandwritingNeuralNetwork.Models
             }
         }
 
+        public DataTable ExecuteSQLAsDataTable(string sql)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(sql, connection))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        dt.Load(reader);
+                    }
+                }
+            }
+            return dt;
+        }
+
         private void LoadPropertiesFromReader(SqlDataReader reader)
         {
             // Get all public instance properties.
@@ -174,6 +227,20 @@ namespace HandwritingNeuralNetwork.Models
                     {
                         value = null;
                     }
+                    property.SetValue(this, value);
+                }
+            }
+        }
+
+        public void LoadPropertiesFromDataRow(DataRow dr)
+        {
+            PropertyInfo[] properties = GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            foreach (PropertyInfo property in properties)
+            {
+                if (property.CanWrite && dr.Table.Columns.Contains(property.Name))
+                {
+                    object value = dr[property.Name];
+                    if (value is DBNull) value = null;
                     property.SetValue(this, value);
                 }
             }
@@ -223,6 +290,7 @@ namespace HandwritingNeuralNetwork.Models
             }
             return className;
         }
+
     }
 
     #region Data Reader Extensions

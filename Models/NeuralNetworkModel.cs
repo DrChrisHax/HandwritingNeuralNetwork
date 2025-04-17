@@ -4,6 +4,10 @@ using System;
 
 namespace HandwritingNeuralNetwork.Models
 {
+
+    /*
+     * DEPRECATED
+     */
     public class NeuralNetworkModel : model_base
     {
         public int ID_Model { get; set; }

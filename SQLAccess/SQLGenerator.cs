@@ -2,12 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace HandwritingNeuralNetwork.SQLAccess
 {
@@ -38,13 +34,31 @@ namespace HandwritingNeuralNetwork.SQLAccess
         {
             string sClause = string.Empty;
             List<PropertyInfo> lstProps = _mdl.Model_DataPropertiesWithoutPKOrRefs();
-            foreach(PropertyInfo p in lstProps)
+            foreach (PropertyInfo p in lstProps)
             {
                 sClause = AppendCommaSeperatedString(sClause, $"[{p.Name}] = {PropertyToValidValue(_mdl, p)}");
             }
 
             return $"UPDATE {_mdl.EntityName()} SET {sClause} WHERE {_mdl.EntityName()}.{_mdl.PrimaryKeyProperty().Name} = " +
                    $"{PropertyToValidValue(_mdl, _mdl.PrimaryKeyProperty())}";
+        }
+
+        public string GetSQLSelectWOB(string where, string orderBy)
+        {
+            string tableName = _mdl.EntityName();
+            string sql = $"SELECT * FROM {tableName}";
+
+            if (!string.IsNullOrWhiteSpace(where))
+            {
+                sql += $" WHERE {where}";
+            }
+
+            if (!string.IsNullOrWhiteSpace(orderBy))
+            {
+                sql += $" ORDER BY {orderBy}";
+            }
+
+            return sql;
         }
 
         private string AppendCommaSeperatedString(string val, string append)
@@ -80,7 +94,7 @@ namespace HandwritingNeuralNetwork.SQLAccess
             {
                 if (oValue != null && !((DateTime)oValue).Equals(new DateTime()))
                 {
-                    // Manage for SQL datetime limits.
+                    //Manage for SQL datetime limits.
                     DateTime dateValue = (DateTime)oValue;
                     if (dateValue < Shared.Types.SQLMinDate())
                         dateValue = Shared.Types.SQLMinDate();
@@ -105,7 +119,7 @@ namespace HandwritingNeuralNetwork.SQLAccess
             {
                 strValue = oValue != null ? ((double)oValue).ToString(CultureInfo.InvariantCulture) : "NULL";
             }
-            else if (tp.Equals(typeof(float))) // Single in VB
+            else if (tp.Equals(typeof(float)))
             {
                 strValue = oValue != null ? ((float)oValue).ToString(CultureInfo.InvariantCulture) : "NULL";
             }
@@ -134,9 +148,9 @@ namespace HandwritingNeuralNetwork.SQLAccess
                     byte[] byteArray = (byte[])oValue;
                     int length = byteArray.Length;
                     StringBuilder sb = new StringBuilder((length * 3) - 1);
-                    sb.Append("0x"); // We need this
+                    sb.Append("0x"); //We need this
 
-                    if (byteArray.Length <= 5120) // 5120 bytes (5 KB)
+                    if (byteArray.Length <= 5120) //5120 bytes (5 KB)
                     {
                         sb.Append(BitConverter.ToString(byteArray));
                     }

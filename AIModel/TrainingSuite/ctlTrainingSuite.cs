@@ -1,4 +1,5 @@
-﻿using HandwritingNeuralNetwork.Shared;
+﻿using HandwritingNeuralNetwork.Models;
+using HandwritingNeuralNetwork.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,6 +60,11 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            //TODO:
+            //Add validation so the user does not accidentally save the 
+            //same drawing grid data over and over
+            //we need clean training data for this all to work
+
             int classification = (int)btnTrainingNumber.Tag;
             _controller.SaveGrid(_grid.GetCells(), classification);
         }
