@@ -87,19 +87,20 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
             if (counts == null || counts.Length != 11)
                 throw new ArgumentException("Expected exactly 11 counts.", nameof(counts));
 
-            // build a '$'‑bar for each count…
-            index1.Text = string('$', counts[0]);
-            index2.Text = string('$', counts[1]);
-            index3.Text = string('$', counts[2]);
-            index4.Text = string('$', counts[3]);
-            index5.Text = string('$', counts[4]);
-            index6.Text = string('$', counts[5]);
-            index7.Text = string('$', counts[6]);
-            index8.Text = string('$', counts[7]);
-            index9.Text = string('$', counts[8]);
-            index10.Text = string('$', counts[9]);
-            index11.Text = string('$', counts[10]);
+            // Define the character for each bucket: '0'–'9', then 'n'
+            char[] labels = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'n' };
 
+            index1.Text = $"{counts[0]} number of '{labels[0]}' records";
+            index2.Text = $"{counts[1]} number of '{labels[1]}' records";
+            index3.Text = $"{counts[2]} number of '{labels[2]}' records";
+            index4.Text = $"{counts[3]} number of '{labels[3]}' records";
+            index5.Text = $"{counts[4]} number of '{labels[4]}' records";
+            index6.Text = $"{counts[5]} number of '{labels[5]}' records";
+            index7.Text = $"{counts[6]} number of '{labels[6]}' records";
+            index8.Text = $"{counts[7]} number of '{labels[7]}' records";
+            index9.Text = $"{counts[8]} number of '{labels[8]}' records";
+            index10.Text = $"{counts[9]} number of '{labels[9]}' records";
+            index11.Text = $"{counts[10]} number of '{labels[10]}' records";
         }
 
     }
