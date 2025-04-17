@@ -88,8 +88,7 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
                 throw new ArgumentException("Expected exactly 11 counts.", nameof(counts));
 
             // Define the character for each bucket: '0'–'9', then 'n'
-            char[] labels = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'n' };
-
+            
             index1.Text = $"{counts[0]} number of records";
             index2.Text = $"{counts[1]} number of records";
             index3.Text = $"{counts[2]} number of records";
