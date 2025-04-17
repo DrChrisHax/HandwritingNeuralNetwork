@@ -90,17 +90,17 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
             // Define the character for each bucket: '0'–'9', then 'n'
             char[] labels = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'n' };
 
-            index1.Text = $"{counts[0]} number of '{labels[0]}' records";
-            index2.Text = $"{counts[1]} number of '{labels[1]}' records";
-            index3.Text = $"{counts[2]} number of '{labels[2]}' records";
-            index4.Text = $"{counts[3]} number of '{labels[3]}' records";
-            index5.Text = $"{counts[4]} number of '{labels[4]}' records";
-            index6.Text = $"{counts[5]} number of '{labels[5]}' records";
-            index7.Text = $"{counts[6]} number of '{labels[6]}' records";
-            index8.Text = $"{counts[7]} number of '{labels[7]}' records";
-            index9.Text = $"{counts[8]} number of '{labels[8]}' records";
-            index10.Text = $"{counts[9]} number of '{labels[9]}' records";
-            index11.Text = $"{counts[10]} number of '{labels[10]}' records";
+            index1.Text = $"{counts[0]} number of records";
+            index2.Text = $"{counts[1]} number of records";
+            index3.Text = $"{counts[2]} number of records";
+            index4.Text = $"{counts[3]} number of records";
+            index5.Text = $"{counts[4]} number of records";
+            index6.Text = $"{counts[5]} number of records";
+            index7.Text = $"{counts[6]} number of records";
+            index8.Text = $"{counts[7]} number of records";
+            index9.Text = $"{counts[8]} number of records";
+            index10.Text = $"{counts[9]} number of records";
+            index11.Text = $"{counts[10]} number of n records";
         }
 
     }
