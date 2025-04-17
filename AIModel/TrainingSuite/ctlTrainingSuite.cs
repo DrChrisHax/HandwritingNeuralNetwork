@@ -89,17 +89,17 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
 
             // Define the character for each bucket: '0'–'9', then 'n'
             
-            index1.Text = $"{counts[0]} number of records";
-            index2.Text = $"{counts[1]} number of records";
-            index3.Text = $"{counts[2]} number of records";
-            index4.Text = $"{counts[3]} number of records";
-            index5.Text = $"{counts[4]} number of records";
-            index6.Text = $"{counts[5]} number of records";
-            index7.Text = $"{counts[6]} number of records";
-            index8.Text = $"{counts[7]} number of records";
-            index9.Text = $"{counts[8]} number of records";
-            index10.Text = $"{counts[9]} number of records";
-            index11.Text = $"{counts[10]} number of n records";
+            index1.Text = $"{counts[0]} number of 0 records";
+            index2.Text = $"{counts[1]} number of 1 records";
+            index3.Text = $"{counts[2]} number of 2 records";
+            index4.Text = $"{counts[3]} number of 3 records";
+            index5.Text = $"{counts[4]} number of 4 records";
+            index6.Text = $"{counts[5]} number of 5 records";
+            index7.Text = $"{counts[6]} number of 6 records";
+            index8.Text = $"{counts[7]} number of 7 records";
+            index9.Text = $"{counts[8]} number of 8 records";
+            index10.Text = $"{counts[9]} number of 9 records";
+            index11.Text = $"{counts[10]} number Not a Number of records";
         }
 
     }
