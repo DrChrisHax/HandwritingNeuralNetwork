@@ -3,8 +3,9 @@
     public static class AppConstants
     {
         //Grid Constants
-        public const int GRID_ROWS = 64;
-        public const int GRID_COLUMNS = 64;
+        public const int GRID_ROWS = 16;
+        public const int GRID_COLUMNS = 16;
+        public const int CELL_SIZE = 320 / AppConstants.GRID_ROWS; //320x320
 
         //AI Constants
         public const int INPUT_NEURONS = GRID_ROWS * GRID_COLUMNS;
