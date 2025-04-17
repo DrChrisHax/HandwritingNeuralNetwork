@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HandwritingNeuralNetwork.Shared;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing.Imaging;
@@ -71,8 +72,8 @@ namespace HandwritingNeuralNetwork.Models
         {
             if (arr == null)
                 throw new ArgumentNullException(nameof(arr));
-            if (arr.Length != 4096)
-                throw new ArgumentException("The bool array must have exactly 4096 elements.", nameof(arr));
+            if (arr.Length != AppConstants.GRID_COLUMNS * AppConstants.GRID_ROWS)
+                throw new ArgumentException($"The bool array must have exactly {AppConstants.GRID_COLUMNS * AppConstants.GRID_ROWS} elements.", nameof(arr));
 
             int charCount = arr.Length >> 3;
             char[] result = new char[charCount];
@@ -102,10 +103,10 @@ namespace HandwritingNeuralNetwork.Models
         {
             if (str == null)
                 throw new ArgumentNullException(nameof(str));
-            if (str.Length != 512)
-                throw new ArgumentException("The string must have exactly 512 characters for a 4096-element bool array.", nameof(str));
+            if (str.Length != AppConstants.GRID_COLUMNS << 3)
+                throw new ArgumentException($"The string must have exactly {AppConstants.GRID_COLUMNS << 3} characters for a {AppConstants.GRID_COLUMNS * AppConstants.GRID_ROWS}-element bool array.", nameof(str));
 
-            bool[,] result = new bool[64, 64];
+            bool[,] result = new bool[AppConstants.GRID_COLUMNS, AppConstants.GRID_ROWS];
 
             for (int i = 0; i < str.Length; i++)
             {
