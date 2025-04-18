@@ -47,17 +47,18 @@
             this.toolNotANumber = new System.Windows.Forms.ToolStripMenuItem();
             this.lblPrediction = new System.Windows.Forms.Label();
             this.btnFillGrid = new System.Windows.Forms.Button();
+            this.btnLoadModel = new System.Windows.Forms.Button();
             this.cntxTrainingNumbers.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(15, 15);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(5);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(330, 27);
+            this.lblTitle.Size = new System.Drawing.Size(366, 32);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Handwriting Neural Network";
             // 
@@ -68,10 +69,10 @@
             this.btnAnalyze.BackColor = System.Drawing.SystemColors.Control;
             this.btnAnalyze.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAnalyze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAnalyze.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnalyze.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnalyze.Location = new System.Drawing.Point(15, 60);
             this.btnAnalyze.Name = "btnAnalyze";
-            this.btnAnalyze.Size = new System.Drawing.Size(205, 33);
+            this.btnAnalyze.Size = new System.Drawing.Size(223, 38);
             this.btnAnalyze.TabIndex = 1;
             this.btnAnalyze.Text = "Analyze Handwriting";
             this.btnAnalyze.UseMnemonic = false;
@@ -97,10 +98,10 @@
             this.btnClearGrid.BackColor = System.Drawing.SystemColors.Control;
             this.btnClearGrid.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClearGrid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClearGrid.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearGrid.Location = new System.Drawing.Point(548, 670);
             this.btnClearGrid.Name = "btnClearGrid";
-            this.btnClearGrid.Size = new System.Drawing.Size(113, 33);
+            this.btnClearGrid.Size = new System.Drawing.Size(123, 38);
             this.btnClearGrid.TabIndex = 3;
             this.btnClearGrid.Text = "Clear Grid";
             this.btnClearGrid.UseMnemonic = false;
@@ -123,82 +124,82 @@
             this.tool9,
             this.toolNotANumber});
             this.cntxTrainingNumbers.Name = "cntxTrainingNumbers";
-            this.cntxTrainingNumbers.Size = new System.Drawing.Size(176, 268);
+            this.cntxTrainingNumbers.Size = new System.Drawing.Size(202, 356);
             // 
             // tool0
             // 
             this.tool0.Name = "tool0";
-            this.tool0.Size = new System.Drawing.Size(175, 24);
+            this.tool0.Size = new System.Drawing.Size(201, 32);
             this.tool0.Tag = "0";
             this.tool0.Text = "0";
             // 
             // tool1
             // 
             this.tool1.Name = "tool1";
-            this.tool1.Size = new System.Drawing.Size(175, 24);
+            this.tool1.Size = new System.Drawing.Size(201, 32);
             this.tool1.Tag = "1";
             this.tool1.Text = "1";
             // 
             // tool2
             // 
             this.tool2.Name = "tool2";
-            this.tool2.Size = new System.Drawing.Size(175, 24);
+            this.tool2.Size = new System.Drawing.Size(201, 32);
             this.tool2.Tag = "2";
             this.tool2.Text = "2";
             // 
             // tool3
             // 
             this.tool3.Name = "tool3";
-            this.tool3.Size = new System.Drawing.Size(175, 24);
+            this.tool3.Size = new System.Drawing.Size(201, 32);
             this.tool3.Tag = "3";
             this.tool3.Text = "3";
             // 
             // tool4
             // 
             this.tool4.Name = "tool4";
-            this.tool4.Size = new System.Drawing.Size(175, 24);
+            this.tool4.Size = new System.Drawing.Size(201, 32);
             this.tool4.Tag = "4";
             this.tool4.Text = "4";
             // 
             // tool5
             // 
             this.tool5.Name = "tool5";
-            this.tool5.Size = new System.Drawing.Size(175, 24);
+            this.tool5.Size = new System.Drawing.Size(201, 32);
             this.tool5.Tag = "5";
             this.tool5.Text = "5";
             // 
             // tool6
             // 
             this.tool6.Name = "tool6";
-            this.tool6.Size = new System.Drawing.Size(175, 24);
+            this.tool6.Size = new System.Drawing.Size(201, 32);
             this.tool6.Tag = "6";
             this.tool6.Text = "6";
             // 
             // tool7
             // 
             this.tool7.Name = "tool7";
-            this.tool7.Size = new System.Drawing.Size(175, 24);
+            this.tool7.Size = new System.Drawing.Size(201, 32);
             this.tool7.Tag = "7";
             this.tool7.Text = "7";
             // 
             // tool8
             // 
             this.tool8.Name = "tool8";
-            this.tool8.Size = new System.Drawing.Size(175, 24);
+            this.tool8.Size = new System.Drawing.Size(201, 32);
             this.tool8.Tag = "8";
             this.tool8.Text = "8";
             // 
             // tool9
             // 
             this.tool9.Name = "tool9";
-            this.tool9.Size = new System.Drawing.Size(175, 24);
+            this.tool9.Size = new System.Drawing.Size(201, 32);
             this.tool9.Tag = "9";
             this.tool9.Text = "9";
             // 
             // toolNotANumber
             // 
             this.toolNotANumber.Name = "toolNotANumber";
-            this.toolNotANumber.Size = new System.Drawing.Size(175, 24);
+            this.toolNotANumber.Size = new System.Drawing.Size(201, 32);
             this.toolNotANumber.Tag = "-1";
             this.toolNotANumber.Text = "Not A Number";
             // 
@@ -207,7 +208,7 @@
             this.lblPrediction.AutoSize = true;
             this.lblPrediction.Location = new System.Drawing.Point(15, 117);
             this.lblPrediction.Name = "lblPrediction";
-            this.lblPrediction.Size = new System.Drawing.Size(283, 27);
+            this.lblPrediction.Size = new System.Drawing.Size(322, 32);
             this.lblPrediction.TabIndex = 7;
             this.lblPrediction.Text = "The number below is a 0";
             // 
@@ -219,28 +220,47 @@
             this.btnFillGrid.BackColor = System.Drawing.SystemColors.Control;
             this.btnFillGrid.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFillGrid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFillGrid.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFillGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFillGrid.Location = new System.Drawing.Point(451, 670);
             this.btnFillGrid.Name = "btnFillGrid";
-            this.btnFillGrid.Size = new System.Drawing.Size(91, 33);
+            this.btnFillGrid.Size = new System.Drawing.Size(99, 38);
             this.btnFillGrid.TabIndex = 8;
             this.btnFillGrid.Text = "Fill Grid";
             this.btnFillGrid.UseMnemonic = false;
             this.btnFillGrid.UseVisualStyleBackColor = false;
             this.btnFillGrid.Click += new System.EventHandler(this.btnFillGrid_Click);
             // 
+            // btnLoadModel
+            // 
+            this.btnLoadModel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnLoadModel.AutoSize = true;
+            this.btnLoadModel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnLoadModel.BackColor = System.Drawing.SystemColors.Control;
+            this.btnLoadModel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLoadModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoadModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoadModel.Location = new System.Drawing.Point(340, 284);
+            this.btnLoadModel.Name = "btnLoadModel";
+            this.btnLoadModel.Size = new System.Drawing.Size(137, 38);
+            this.btnLoadModel.TabIndex = 19;
+            this.btnLoadModel.Text = "Load Model";
+            this.btnLoadModel.UseMnemonic = false;
+            this.btnLoadModel.UseVisualStyleBackColor = false;
+            this.btnLoadModel.Click += new System.EventHandler(this.btnLoadModel_Click);
+            // 
             // ctlAIInput
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.btnLoadModel);
             this.Controls.Add(this.btnFillGrid);
             this.Controls.Add(this.lblPrediction);
             this.Controls.Add(this.btnClearGrid);
             this.Controls.Add(this.pnlDrawingGrid);
             this.Controls.Add(this.btnAnalyze);
             this.Controls.Add(this.lblTitle);
-            this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ctlAIInput";
             this.Size = new System.Drawing.Size(1000, 1000);
@@ -270,5 +290,6 @@
         private System.Windows.Forms.ToolStripMenuItem tool9;
         private System.Windows.Forms.ToolStripMenuItem toolNotANumber;
         private System.Windows.Forms.Button btnFillGrid;
+        private System.Windows.Forms.Button btnLoadModel;
     }
 }
