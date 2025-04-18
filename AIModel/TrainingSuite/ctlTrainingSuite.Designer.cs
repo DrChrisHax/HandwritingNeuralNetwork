@@ -62,7 +62,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btnTrain = new System.Windows.Forms.Button();
-            this.btnSaveModel = new System.Windows.Forms.Button();
             this.btnLoadModel = new System.Windows.Forms.Button();
             this.cntxTrainingNumbers.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -405,7 +404,7 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1000, 36);
+            this.menuStrip1.Size = new System.Drawing.Size(1000, 24);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -426,24 +425,6 @@
             this.btnTrain.UseMnemonic = false;
             this.btnTrain.UseVisualStyleBackColor = false;
             // 
-            // btnSaveModel
-            // 
-            this.btnSaveModel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSaveModel.AutoSize = true;
-            this.btnSaveModel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSaveModel.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSaveModel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSaveModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveModel.Location = new System.Drawing.Point(676, 357);
-            this.btnSaveModel.Name = "btnSaveModel";
-            this.btnSaveModel.Size = new System.Drawing.Size(139, 38);
-            this.btnSaveModel.TabIndex = 17;
-            this.btnSaveModel.Text = "Save Model";
-            this.btnSaveModel.UseMnemonic = false;
-            this.btnSaveModel.UseVisualStyleBackColor = false;
-            this.btnSaveModel.Click += new System.EventHandler(this.btnSaveModel_Click);
-            // 
             // btnLoadModel
             // 
             this.btnLoadModel.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -453,7 +434,7 @@
             this.btnLoadModel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLoadModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoadModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoadModel.Location = new System.Drawing.Point(676, 424);
+            this.btnLoadModel.Location = new System.Drawing.Point(674, 340);
             this.btnLoadModel.Name = "btnLoadModel";
             this.btnLoadModel.Size = new System.Drawing.Size(137, 38);
             this.btnLoadModel.TabIndex = 18;
@@ -468,7 +449,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.btnLoadModel);
-            this.Controls.Add(this.btnSaveModel);
             this.Controls.Add(this.btnTrain);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
@@ -526,7 +506,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnSaveModel;
         private System.Windows.Forms.Button btnLoadModel;
     }
 }
