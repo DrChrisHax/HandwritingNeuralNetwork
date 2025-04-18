@@ -23,7 +23,7 @@ namespace HandwritingNeuralNetwork.Models
 
         public int[] TrainingDataCount()
         {
-            string sql = "SELECT DataLabel, COUNT(*) AS RecordCount FROM TrainingData16 GROUP BY DataLabel";
+            string sql = "SELECT DataLabel, COUNT(*) AS RecordCount FROM TrainingData16 GROUP BY DataLabel ORDER BY DataLabel ";
 
             DataTable dt = ExecuteSQLAsDataTable(sql);
 

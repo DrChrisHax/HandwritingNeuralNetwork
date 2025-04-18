@@ -66,7 +66,7 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
         ///Uses an 80/20 split after balancing.
         ///Architecture: 256-128-64-11
         ///</summary>
-        public void Train(double learningRate = 3.0, int epochs = 20, int miniBatchSize = 10)
+        public void Train(double learningRate = 3.0, int epochs = 50, int miniBatchSize = 10)
         {
 
             var allData = _mgr.SelectAll()
