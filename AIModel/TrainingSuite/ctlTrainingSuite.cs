@@ -102,5 +102,14 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
             index11.Text = $"{counts[10]} number Not a Number of records";
         }
 
+        private void btnSaveModel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLoadModel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
