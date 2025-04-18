@@ -70,8 +70,12 @@ namespace HandwritingNeuralNetwork.AIModel
         }
 
 
+
         #endregion
 
-        
+        private void btnLoadModel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
