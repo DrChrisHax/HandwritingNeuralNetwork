@@ -1,13 +1,5 @@
-﻿using HandwritingNeuralNetwork.Models;
-using HandwritingNeuralNetwork.Shared;
+﻿using HandwritingNeuralNetwork.Shared;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
@@ -36,6 +28,26 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
         public void SetController(object controller)
         {
             _controller = (TrainingSuiteController)controller;
+        }
+
+        public void PopulateTraininigDataCounts(int[] counts)
+        {
+            if (counts == null || counts.Length != 11)
+                throw new ArgumentException("Expected exactly 11 counts.", nameof(counts));
+
+            // Define the character for each bucket: '0'–'9', then 'n'
+
+            count0.Text = $"{counts[0]} instances of digit 0 records";
+            count1.Text = $"{counts[1]} instances of digit 1 records";
+            count2.Text = $"{counts[2]} instances of digit 2 records";
+            count3.Text = $"{counts[3]} instances of digit 3 records";
+            count4.Text = $"{counts[4]} instances of digit 4 records";
+            count5.Text = $"{counts[5]} instances of digit 5 records";
+            count6.Text = $"{counts[6]} instances of digit 6 records";
+            count7.Text = $"{counts[7]} instances of digit 7 records";
+            count8.Text = $"{counts[8]} instances of digit 8 records";
+            count9.Text = $"{counts[9]} instances of digit 9 records";
+            countNaN.Text = $"{counts[10]} instances Not a Number of records";
         }
 
         #region Events
@@ -71,6 +83,16 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
             _controller.SaveGrid(_grid.GetCells(), classification);
         }
 
+        private void btnTrainModel_Click(object sender, EventArgs e)
+        {
+            _controller.TrainModel();
+        }
+
+        private void btnSaveModel_Click(object sender, EventArgs e)
+        {
+            _controller.SaveModel();
+        }
+
         private void btnFillGrid_Click(object sender, EventArgs e)
         {
             _grid.Fill();
@@ -84,25 +106,8 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
 
         #endregion
 
-        public void _view.PopulateTraininigDataCounts(int[] counts)
-        {
-            if (counts == null || counts.Length != 11)
-                throw new ArgumentException("Expected exactly 11 counts.", nameof(counts));
+        
 
-            // Define the character for each bucket: '0'–'9', then 'n'
-            
-            index1.Text = $"{counts[0]} number of 0 records";
-            index2.Text = $"{counts[1]} number of 1 records";
-            index3.Text = $"{counts[2]} number of 2 records";
-            index4.Text = $"{counts[3]} number of 3 records";
-            index5.Text = $"{counts[4]} number of 4 records";
-            index6.Text = $"{counts[5]} number of 5 records";
-            index7.Text = $"{counts[6]} number of 6 records";
-            index8.Text = $"{counts[7]} number of 7 records";
-            index9.Text = $"{counts[8]} number of 8 records";
-            index10.Text = $"{counts[9]} number of 9 records";
-            index11.Text = $"{counts[10]} number Not a Number of records";
-        }
-
+        
     }
 }

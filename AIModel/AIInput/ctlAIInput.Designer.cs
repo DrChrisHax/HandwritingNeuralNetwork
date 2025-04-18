@@ -47,6 +47,7 @@
             this.toolNotANumber = new System.Windows.Forms.ToolStripMenuItem();
             this.lblPrediction = new System.Windows.Forms.Label();
             this.btnFillGrid = new System.Windows.Forms.Button();
+            this.btnLoadModel = new System.Windows.Forms.Button();
             this.cntxTrainingNumbers.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +68,7 @@
             this.btnAnalyze.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnAnalyze.BackColor = System.Drawing.SystemColors.Control;
             this.btnAnalyze.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAnalyze.Enabled = false;
             this.btnAnalyze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnalyze.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnalyze.Location = new System.Drawing.Point(15, 60);
@@ -229,11 +231,30 @@
             this.btnFillGrid.UseVisualStyleBackColor = false;
             this.btnFillGrid.Click += new System.EventHandler(this.btnFillGrid_Click);
             // 
+            // btnLoadModel
+            // 
+            this.btnLoadModel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnLoadModel.AutoSize = true;
+            this.btnLoadModel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnLoadModel.BackColor = System.Drawing.SystemColors.Control;
+            this.btnLoadModel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLoadModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoadModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoadModel.Location = new System.Drawing.Point(546, 303);
+            this.btnLoadModel.Name = "btnLoadModel";
+            this.btnLoadModel.Size = new System.Drawing.Size(115, 34);
+            this.btnLoadModel.TabIndex = 18;
+            this.btnLoadModel.Text = "Load Model";
+            this.btnLoadModel.UseMnemonic = false;
+            this.btnLoadModel.UseVisualStyleBackColor = false;
+            this.btnLoadModel.Click += new System.EventHandler(this.btnLoadModel_Click);
+            // 
             // ctlAIInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.btnLoadModel);
             this.Controls.Add(this.btnFillGrid);
             this.Controls.Add(this.lblPrediction);
             this.Controls.Add(this.btnClearGrid);
@@ -270,5 +291,6 @@
         private System.Windows.Forms.ToolStripMenuItem tool9;
         private System.Windows.Forms.ToolStripMenuItem toolNotANumber;
         private System.Windows.Forms.Button btnFillGrid;
+        private System.Windows.Forms.Button btnLoadModel;
     }
 }

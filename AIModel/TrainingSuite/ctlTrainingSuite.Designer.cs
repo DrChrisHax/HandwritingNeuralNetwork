@@ -48,22 +48,20 @@
             this.toolNotANumber = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.countNaN = new System.Windows.Forms.Label();
+            this.count9 = new System.Windows.Forms.Label();
+            this.count8 = new System.Windows.Forms.Label();
+            this.count7 = new System.Windows.Forms.Label();
+            this.count4 = new System.Windows.Forms.Label();
+            this.count6 = new System.Windows.Forms.Label();
+            this.count5 = new System.Windows.Forms.Label();
+            this.count3 = new System.Windows.Forms.Label();
+            this.count2 = new System.Windows.Forms.Label();
+            this.count1 = new System.Windows.Forms.Label();
+            this.count0 = new System.Windows.Forms.Label();
+            this.btnTrainModel = new System.Windows.Forms.Button();
+            this.btnSaveModel = new System.Windows.Forms.Button();
             this.cntxTrainingNumbers.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlDrawingGrid
@@ -85,9 +83,9 @@
             this.btnClearGrid.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClearGrid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearGrid.Location = new System.Drawing.Point(548, 673);
+            this.btnClearGrid.Location = new System.Drawing.Point(557, 673);
             this.btnClearGrid.Name = "btnClearGrid";
-            this.btnClearGrid.Size = new System.Drawing.Size(123, 38);
+            this.btnClearGrid.Size = new System.Drawing.Size(104, 34);
             this.btnClearGrid.TabIndex = 4;
             this.btnClearGrid.Text = "Clear Grid";
             this.btnClearGrid.UseMnemonic = false;
@@ -103,9 +101,9 @@
             this.btnFillGrid.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFillGrid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFillGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFillGrid.Location = new System.Drawing.Point(451, 673);
+            this.btnFillGrid.Location = new System.Drawing.Point(467, 673);
             this.btnFillGrid.Name = "btnFillGrid";
-            this.btnFillGrid.Size = new System.Drawing.Size(99, 38);
+            this.btnFillGrid.Size = new System.Drawing.Size(84, 34);
             this.btnFillGrid.TabIndex = 9;
             this.btnFillGrid.Text = "Fill Grid";
             this.btnFillGrid.UseMnemonic = false;
@@ -118,7 +116,7 @@
             this.lblTrainAs.AutoSize = true;
             this.lblTrainAs.Location = new System.Drawing.Point(335, 250);
             this.lblTrainAs.Name = "lblTrainAs";
-            this.lblTrainAs.Size = new System.Drawing.Size(127, 32);
+            this.lblTrainAs.Size = new System.Drawing.Size(108, 29);
             this.lblTrainAs.TabIndex = 10;
             this.lblTrainAs.Text = "Train As:";
             // 
@@ -134,7 +132,7 @@
             this.btnTrainingNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTrainingNumber.Location = new System.Drawing.Point(453, 249);
             this.btnTrainingNumber.Name = "btnTrainingNumber";
-            this.btnTrainingNumber.Size = new System.Drawing.Size(36, 38);
+            this.btnTrainingNumber.Size = new System.Drawing.Size(32, 34);
             this.btnTrainingNumber.TabIndex = 11;
             this.btnTrainingNumber.Tag = "0";
             this.btnTrainingNumber.Text = "0";
@@ -158,83 +156,83 @@
             this.tool9,
             this.toolNotANumber});
             this.cntxTrainingNumbers.Name = "cntxTrainingNumbers";
-            this.cntxTrainingNumbers.Size = new System.Drawing.Size(202, 356);
+            this.cntxTrainingNumbers.Size = new System.Drawing.Size(176, 268);
             this.cntxTrainingNumbers.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.cntxTrainingNumbers_ItemClicked);
             // 
             // tool0
             // 
             this.tool0.Name = "tool0";
-            this.tool0.Size = new System.Drawing.Size(201, 32);
+            this.tool0.Size = new System.Drawing.Size(175, 24);
             this.tool0.Tag = "0";
             this.tool0.Text = "0";
             // 
             // tool1
             // 
             this.tool1.Name = "tool1";
-            this.tool1.Size = new System.Drawing.Size(201, 32);
+            this.tool1.Size = new System.Drawing.Size(175, 24);
             this.tool1.Tag = "1";
             this.tool1.Text = "1";
             // 
             // tool2
             // 
             this.tool2.Name = "tool2";
-            this.tool2.Size = new System.Drawing.Size(201, 32);
+            this.tool2.Size = new System.Drawing.Size(175, 24);
             this.tool2.Tag = "2";
             this.tool2.Text = "2";
             // 
             // tool3
             // 
             this.tool3.Name = "tool3";
-            this.tool3.Size = new System.Drawing.Size(201, 32);
+            this.tool3.Size = new System.Drawing.Size(175, 24);
             this.tool3.Tag = "3";
             this.tool3.Text = "3";
             // 
             // tool4
             // 
             this.tool4.Name = "tool4";
-            this.tool4.Size = new System.Drawing.Size(201, 32);
+            this.tool4.Size = new System.Drawing.Size(175, 24);
             this.tool4.Tag = "4";
             this.tool4.Text = "4";
             // 
             // tool5
             // 
             this.tool5.Name = "tool5";
-            this.tool5.Size = new System.Drawing.Size(201, 32);
+            this.tool5.Size = new System.Drawing.Size(175, 24);
             this.tool5.Tag = "5";
             this.tool5.Text = "5";
             // 
             // tool6
             // 
             this.tool6.Name = "tool6";
-            this.tool6.Size = new System.Drawing.Size(201, 32);
+            this.tool6.Size = new System.Drawing.Size(175, 24);
             this.tool6.Tag = "6";
             this.tool6.Text = "6";
             // 
             // tool7
             // 
             this.tool7.Name = "tool7";
-            this.tool7.Size = new System.Drawing.Size(201, 32);
+            this.tool7.Size = new System.Drawing.Size(175, 24);
             this.tool7.Tag = "7";
             this.tool7.Text = "7";
             // 
             // tool8
             // 
             this.tool8.Name = "tool8";
-            this.tool8.Size = new System.Drawing.Size(201, 32);
+            this.tool8.Size = new System.Drawing.Size(175, 24);
             this.tool8.Tag = "8";
             this.tool8.Text = "8";
             // 
             // tool9
             // 
             this.tool9.Name = "tool9";
-            this.tool9.Size = new System.Drawing.Size(201, 32);
+            this.tool9.Size = new System.Drawing.Size(175, 24);
             this.tool9.Tag = "9";
             this.tool9.Text = "9";
             // 
             // toolNotANumber
             // 
             this.toolNotANumber.Name = "toolNotANumber";
-            this.toolNotANumber.Size = new System.Drawing.Size(201, 32);
+            this.toolNotANumber.Size = new System.Drawing.Size(175, 24);
             this.toolNotANumber.Tag = "-1";
             this.toolNotANumber.Text = "Not A Number";
             // 
@@ -249,7 +247,7 @@
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(340, 292);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(74, 38);
+            this.btnSave.Size = new System.Drawing.Size(63, 34);
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Save";
             this.btnSave.UseMnemonic = false;
@@ -263,189 +261,197 @@
             this.lblTitle.Location = new System.Drawing.Point(15, 15);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(5);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(191, 32);
+            this.lblTitle.Size = new System.Drawing.Size(163, 29);
             this.lblTitle.TabIndex = 13;
             this.lblTitle.Text = "Training Suite";
             // 
-            // groupBox1
+            // countNaN
             // 
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(137, 340);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 328);
-            this.groupBox1.TabIndex = 14;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.countNaN.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.countNaN.AutoSize = true;
+            this.countNaN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.countNaN.Location = new System.Drawing.Point(664, 510);
+            this.countNaN.Name = "countNaN";
+            this.countNaN.Size = new System.Drawing.Size(71, 17);
+            this.countNaN.TabIndex = 10;
+            this.countNaN.Text = "countNaN";
             // 
-            // menuStrip1
+            // count9
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1000, 24);
-            this.menuStrip1.TabIndex = 15;
-            this.menuStrip1.Text = "menuStrip1";
+            this.count9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.count9.AutoSize = true;
+            this.count9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.count9.Location = new System.Drawing.Point(664, 493);
+            this.count9.Name = "count9";
+            this.count9.Size = new System.Drawing.Size(51, 17);
+            this.count9.TabIndex = 9;
+            this.count9.Text = "count9";
             // 
-            // button1
+            // count8
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.AutoSize = true;
-            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(587, 292);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 38);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Train";
-            this.button1.UseMnemonic = false;
-            this.button1.UseVisualStyleBackColor = false;
+            this.count8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.count8.AutoSize = true;
+            this.count8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.count8.Location = new System.Drawing.Point(664, 476);
+            this.count8.Name = "count8";
+            this.count8.Size = new System.Drawing.Size(51, 17);
+            this.count8.TabIndex = 8;
+            this.count8.Text = "count8";
             // 
-            // label1
+            // count7
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(7, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "index1";
+            this.count7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.count7.AutoSize = true;
+            this.count7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.count7.Location = new System.Drawing.Point(664, 459);
+            this.count7.Name = "count7";
+            this.count7.Size = new System.Drawing.Size(51, 17);
+            this.count7.TabIndex = 7;
+            this.count7.Text = "count7";
             // 
-            // label2
+            // count4
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(7, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "index2";
+            this.count4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.count4.AutoSize = true;
+            this.count4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.count4.Location = new System.Drawing.Point(664, 408);
+            this.count4.Name = "count4";
+            this.count4.Size = new System.Drawing.Size(51, 17);
+            this.count4.TabIndex = 6;
+            this.count4.Text = "count4";
             // 
-            // label3
+            // count6
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(7, 75);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "index3";
+            this.count6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.count6.AutoSize = true;
+            this.count6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.count6.Location = new System.Drawing.Point(664, 442);
+            this.count6.Name = "count6";
+            this.count6.Size = new System.Drawing.Size(51, 17);
+            this.count6.TabIndex = 5;
+            this.count6.Text = "count6";
             // 
-            // label4
+            // count5
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(7, 95);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "index4";
+            this.count5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.count5.AutoSize = true;
+            this.count5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.count5.Location = new System.Drawing.Point(664, 425);
+            this.count5.Name = "count5";
+            this.count5.Size = new System.Drawing.Size(51, 17);
+            this.count5.TabIndex = 4;
+            this.count5.Text = "count5";
             // 
-            // label5
+            // count3
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 135);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 20);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "index6";
+            this.count3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.count3.AutoSize = true;
+            this.count3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.count3.Location = new System.Drawing.Point(664, 391);
+            this.count3.Name = "count3";
+            this.count3.Size = new System.Drawing.Size(51, 17);
+            this.count3.TabIndex = 3;
+            this.count3.Text = "count3";
             // 
-            // label6
+            // count2
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(7, 155);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 20);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "index7";
+            this.count2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.count2.AutoSize = true;
+            this.count2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.count2.Location = new System.Drawing.Point(664, 374);
+            this.count2.Name = "count2";
+            this.count2.Size = new System.Drawing.Size(51, 17);
+            this.count2.TabIndex = 2;
+            this.count2.Text = "count2";
             // 
-            // label7
+            // count1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(6, 115);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 20);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "index5";
+            this.count1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.count1.AutoSize = true;
+            this.count1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.count1.Location = new System.Drawing.Point(664, 357);
+            this.count1.Name = "count1";
+            this.count1.Size = new System.Drawing.Size(51, 17);
+            this.count1.TabIndex = 1;
+            this.count1.Text = "count1";
             // 
-            // label8
+            // count0
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 175);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 20);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "index8";
+            this.count0.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.count0.AutoSize = true;
+            this.count0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.count0.Location = new System.Drawing.Point(664, 340);
+            this.count0.Name = "count0";
+            this.count0.Size = new System.Drawing.Size(51, 17);
+            this.count0.TabIndex = 0;
+            this.count0.Text = "count0";
             // 
-            // label9
+            // btnTrainModel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(7, 195);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(55, 20);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "index9";
+            this.btnTrainModel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnTrainModel.AutoSize = true;
+            this.btnTrainModel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnTrainModel.BackColor = System.Drawing.SystemColors.Control;
+            this.btnTrainModel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTrainModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTrainModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrainModel.Location = new System.Drawing.Point(416, 292);
+            this.btnTrainModel.Name = "btnTrainModel";
+            this.btnTrainModel.Size = new System.Drawing.Size(117, 34);
+            this.btnTrainModel.TabIndex = 16;
+            this.btnTrainModel.Text = "Train Model";
+            this.btnTrainModel.UseMnemonic = false;
+            this.btnTrainModel.UseVisualStyleBackColor = false;
+            this.btnTrainModel.Click += new System.EventHandler(this.btnTrainModel_Click);
             // 
-            // label10
+            // btnSaveModel
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(7, 215);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(64, 20);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "index10";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(7, 235);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(64, 20);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "index11";
+            this.btnSaveModel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSaveModel.AutoSize = true;
+            this.btnSaveModel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSaveModel.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSaveModel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaveModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveModel.Location = new System.Drawing.Point(545, 292);
+            this.btnSaveModel.Name = "btnSaveModel";
+            this.btnSaveModel.Size = new System.Drawing.Size(116, 34);
+            this.btnSaveModel.TabIndex = 17;
+            this.btnSaveModel.Text = "Save Model";
+            this.btnSaveModel.UseMnemonic = false;
+            this.btnSaveModel.UseVisualStyleBackColor = false;
+            this.btnSaveModel.Click += new System.EventHandler(this.btnSaveModel_Click);
             // 
             // ctlTrainingSuite
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.btnSaveModel);
+            this.Controls.Add(this.countNaN);
+            this.Controls.Add(this.count9);
+            this.Controls.Add(this.btnTrainModel);
+            this.Controls.Add(this.count8);
+            this.Controls.Add(this.count7);
             this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.count6);
+            this.Controls.Add(this.count4);
+            this.Controls.Add(this.count5);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnTrainingNumber);
             this.Controls.Add(this.lblTrainAs);
+            this.Controls.Add(this.count3);
             this.Controls.Add(this.btnFillGrid);
+            this.Controls.Add(this.count2);
             this.Controls.Add(this.btnClearGrid);
+            this.Controls.Add(this.count1);
             this.Controls.Add(this.pnlDrawingGrid);
+            this.Controls.Add(this.count0);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ctlTrainingSuite";
             this.Size = new System.Drawing.Size(1000, 1000);
             this.cntxTrainingNumbers.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -472,19 +478,18 @@
         private System.Windows.Forms.ToolStripMenuItem tool8;
         private System.Windows.Forms.ToolStripMenuItem tool9;
         private System.Windows.Forms.ToolStripMenuItem toolNotANumber;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnTrainModel;
+        private System.Windows.Forms.Label countNaN;
+        private System.Windows.Forms.Label count9;
+        private System.Windows.Forms.Label count8;
+        private System.Windows.Forms.Label count7;
+        private System.Windows.Forms.Label count4;
+        private System.Windows.Forms.Label count6;
+        private System.Windows.Forms.Label count5;
+        private System.Windows.Forms.Label count3;
+        private System.Windows.Forms.Label count2;
+        private System.Windows.Forms.Label count1;
+        private System.Windows.Forms.Label count0;
+        private System.Windows.Forms.Button btnSaveModel;
     }
 }

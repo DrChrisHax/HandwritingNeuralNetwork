@@ -46,7 +46,7 @@ namespace HandwritingNeuralNetwork.AIModel
                            .Aggregate((a, b) => a.value > b.value ? a : b)
                            .index;
             //index 0–9 => digit; index 10 => not‑a‑number
-            return idx == 10 ? -1 : idx;
+            return probs[idx] > 0.5f ? idx: -1;
         }
 
         public override void Train(bool[,] cells, int target)

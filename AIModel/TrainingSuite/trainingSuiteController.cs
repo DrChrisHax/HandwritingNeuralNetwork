@@ -1,11 +1,8 @@
 ﻿using HandwritingNeuralNetwork.Models;
 using HandwritingNeuralNetwork.Shared;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
 {
@@ -28,7 +25,7 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
             _dataCounts = _mgr.TrainingDataCount();
             _modelRecord = new NNModel();
             //List<TrainingData> lst = _mgr.SelectAll(); //Use this line when you need to load in all the training data
-            //_view.PopulateTraininigDataCounts(_dataCounts);
+            _view.PopulateTraininigDataCounts(_dataCounts);
         }
 
         #region Controller Actions
@@ -57,16 +54,12 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
         }
 
 
-        #endregion
-
-        #region Training
-
         ///<summary>
         ///Trains the network on a balanced sample (under-sampled to the smallest class).
         ///Uses an 80/20 split after balancing.
         ///Architecture: 256-128-64-11
         ///</summary>
-        public void Train(double learningRate = 3.0, int epochs = 50, int miniBatchSize = 10)
+        public void TrainModel(double learningRate = 3.0, int epochs = 128, int miniBatchSize = 10)
         {
 
             var allData = _mgr.SelectAll()
@@ -108,14 +101,13 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
             _lastAccuracy = accuracy;
 
             Debug.WriteLine($"Balanced training complete. Test accuracy: {_lastAccuracy:P2}");
-            //_view.OnTrainingCompleted(_lastTrainSize, _lastTestSize, _lastAccuracy);
         }
 
         /// <summary>
         /// Persists the last trained model to the database (biases & weights).
         /// Call this only after Train().
         /// </summary>
-        public void SaveNeuralNetwork(string modelName = "HWNN v0.2")
+        public void SaveModel(string modelName = "HWNN v0.2")
         {
             if (_lastNetwork == null)
                 throw new InvalidOperationException("Please train the model before saving.");
@@ -136,10 +128,12 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
             }
 
             _modelRecord.SaveNeuralNetwork(_lastNetwork);
+            _lastNetwork = null; //Reset to prevent double saving the same model
         }
 
+        #endregion
 
-        #region Helpers
+        #region Support Functions
         private static double[] FlattenMatrix(bool[,] matrix)
         {
             int rows = matrix.GetLength(0), cols = matrix.GetLength(1);
@@ -170,8 +164,6 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
                 if (arr[i] > arr[best]) best = i;
             return best;
         }
-        #endregion
-
         #endregion
 
     }

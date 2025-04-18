@@ -1,12 +1,5 @@
 ﻿using HandwritingNeuralNetwork.Shared;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HandwritingNeuralNetwork.AIModel
@@ -37,7 +30,7 @@ namespace HandwritingNeuralNetwork.AIModel
 
         public void SetPredictedNumber(int prediction)
         {
-            if (prediction > 0) 
+            if (prediction >= 0) 
             {
                 lblPrediction.Text = $"The number below is a {prediction}.";
             }
@@ -48,6 +41,14 @@ namespace HandwritingNeuralNetwork.AIModel
         }
 
         #region ... Events ...
+
+        private void btnLoadModel_Click(object sender, EventArgs e)
+        {
+            if (_controller.LoadModel())
+            {
+                btnAnalyze.Enabled = true;
+            }      
+        }
 
         private void btnClearGrid_Click(object sender, EventArgs e)
         {
@@ -68,6 +69,7 @@ namespace HandwritingNeuralNetwork.AIModel
         {
             //Called when the user draws on the grid
         }
+
 
 
         #endregion
