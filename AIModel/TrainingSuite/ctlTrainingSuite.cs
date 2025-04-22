@@ -36,6 +36,23 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
             _controller = (TrainingSuiteController)controller;
         }
 
+        public void PopulateTrainingDataCounts(int[] dataCounts)
+        {
+            if (dataCounts == null || dataCounts.Length != 11)
+            {
+                MessageBox.Show("Invalid data counts array.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            for (int i = 0; i < dataCounts.Length; i++)
+            {
+                string label = (i == 10) ? "Not A Number" : i.ToString();
+                int recordCount = dataCounts[i];
+
+                Console.WriteLine($"{label} has {recordCount} records.");
+            }
+        }
+
         #region Events
 
         private void btnTrainingNumber_Click(object sender, EventArgs e)
@@ -79,8 +96,7 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
             _grid.Clear();
         }
 
-        #endregion
 
-        
+        #endregion
     }
 }

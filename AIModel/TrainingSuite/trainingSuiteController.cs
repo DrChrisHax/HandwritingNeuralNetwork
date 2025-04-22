@@ -18,7 +18,7 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
         {
             _mgr = new TrainingData();
             _dataCounts = _mgr.TrainingDataCount();
-            //_view.PopulateTraininigDataCounts(_dataCounts);
+            _view.PopulateTrainingDataCounts(_dataCounts);
         }
 
         #region Controller Actions
@@ -42,7 +42,7 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
             {
                 _dataCounts[classification]++;
             }
-            //_view.PopulateTraininigDataCounts(_dataCounts);
+            _view.PopulateTrainingDataCounts(_dataCounts);
         }
 
 
