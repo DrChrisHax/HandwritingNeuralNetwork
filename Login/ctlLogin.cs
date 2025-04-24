@@ -21,6 +21,8 @@ namespace HandwritingNeuralNetwork.Login
         public ctlLogin()
         {
             InitializeComponent();
+            txtUsername.KeyDown += TextBox_KeyDown;
+            txtPassword.KeyDown += TextBox_KeyDown;
         }
 
 
@@ -92,12 +94,12 @@ namespace HandwritingNeuralNetwork.Login
                 {
                     Clear(); // Clear UI on succesful login
                 }
-            }         
+            }
         }
 
         private void lnkCreateAccount_Click(object sender, EventArgs e)
         {
-            if(_newAccount == false)
+            if (_newAccount == false)
             {
                 //Switch to Create Account Mode
                 lblConfirmPassword.Visible = true;
@@ -109,7 +111,8 @@ namespace HandwritingNeuralNetwork.Login
                 lblTitle.Text = "Create Account";
 
                 _newAccount = true;
-            } else
+            }
+            else
             {
                 //Go back to Login Mode
                 lblConfirmPassword.Visible = false;
@@ -123,7 +126,17 @@ namespace HandwritingNeuralNetwork.Login
                 _newAccount = false;
             }
         }
-
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    _controller.Login(); // Triggers the same logic as clicking the login button
+                    
+                   
+                    break;
+            }
+        }
 
 
         #endregion
