@@ -131,8 +131,7 @@ namespace HandwritingNeuralNetwork.Login
             switch (e.KeyCode)
             {
                 case Keys.Enter:
-                    btnLogin.PerformClick(); // Triggers the same logic as clicking the login button
-                    e.Handled = true;
+                    _controller.Login(); // Triggers the same logic as clicking the login button
                    
                     break;
             }
