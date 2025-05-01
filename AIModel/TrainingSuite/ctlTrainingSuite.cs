@@ -1,5 +1,8 @@
 ﻿using HandwritingNeuralNetwork.Shared;
 using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
@@ -50,6 +53,17 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
             countNaN.Text = $"{counts[10]} instances Not a Number of records";
         }
 
+        public void SetOutput(string output)
+        {
+            if (txtOutput.InvokeRequired)
+            {
+                txtOutput.Invoke(new Action<string>(SetOutput), output);
+                return;
+            }
+
+            txtOutput.AppendText(output + Environment.NewLine);
+        }
+
         #region Events
 
         private void btnTrainingNumber_Click(object sender, EventArgs e)
@@ -74,23 +88,34 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //TODO:
-            //Add validation so the user does not accidentally save the 
-            //same drawing grid data over and over
-            //we need clean training data for this all to work
-
             int classification = (int)btnTrainingNumber.Tag;
             _controller.SaveGrid(_grid.GetCells(), classification);
         }
 
-        private void btnTrainModel_Click(object sender, EventArgs e)
+        private async void btnTrainModel_Click(object sender, EventArgs e)
         {
-            _controller.TrainModel();
+            btnTrainModel.Enabled = false;
+            txtOutput.AppendText("Training started…" + Environment.NewLine);
+
+            await Task.Run(() => _controller.TrainModel());
+
+            txtOutput.AppendText("Training finished." + Environment.NewLine);
+            btnTrainModel.Enabled = true;
         }
 
         private void btnSaveModel_Click(object sender, EventArgs e)
         {
-            _controller.SaveModel();
+            this.SetOutput("Saving model.");
+            Debug.WriteLine("Saving model.");
+            if (_controller.SaveModel())
+            {
+                this.SetOutput("Model Saved Successfully!");
+                Debug.WriteLine("Model Saved Successfully!");
+            } else
+            {
+                this.SetOutput("Model failed to save.");
+                Debug.WriteLine("Model failed to save.");
+            }
         }
 
         private void btnFillGrid_Click(object sender, EventArgs e)

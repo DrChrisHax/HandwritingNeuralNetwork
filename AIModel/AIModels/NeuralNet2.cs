@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.Diagnostics;
 using HandwritingNeuralNetwork.AIModel.AIModels;
+using HandwritingNeuralNetwork.AIModel.TrainingSuite;
 
 namespace HandwritingNeuralNetwork.AIModel
 {
@@ -41,12 +42,21 @@ namespace HandwritingNeuralNetwork.AIModel
         public override int Analyze(bool[,] cells)
         {
             var probs = AnalyzeProbablities(cells);
+
+            for (int i = 0; i < probs.Length; i++)
+            {
+                Debug.WriteLine($"{i}: {probs[i].ToString("R")}");
+            }
+            Debug.WriteLine("\n");
+
             //pick the index of the highest probability
             int idx = probs.Select((v, i) => (value: v, index: i))
                            .Aggregate((a, b) => a.value > b.value ? a : b)
                            .index;
             //index 0–9 => digit; index 10 => not‑a‑number
-            return probs[idx] > 0.5f ? idx: -1;
+            idx = probs[idx] > 0.5f ? idx : -1;
+            Debug.WriteLine($"Classified as idx");
+            return idx;
         }
 
         public override void Train(bool[,] cells, int target)
@@ -114,7 +124,7 @@ namespace HandwritingNeuralNetwork.AIModel
 
         #region Learning
 
-        public void SGD(List<(double[] input, double[] output)> trainingData, int epochs, int miniBatchSize, double eta)
+        public void SGD(List<(double[] input, double[] output)> trainingData, int epochs, int miniBatchSize, double eta, IViewTrainingSuite view)
         {
             //Train the NN using mini-batch stochastic gradient descent
             //The training data is a list of tuples representing the input and the desired output
@@ -129,7 +139,8 @@ namespace HandwritingNeuralNetwork.AIModel
                     var miniBatch = shuffled.Skip(k).Take(miniBatchSize).ToList();
                     UpdateMiniBatch(miniBatch, eta);
                 }
-                Debug.WriteLine($"Epoch {e} complete");
+                Debug.WriteLine($"Epoch {e + 1} complete");
+                view.SetOutput($"Epoch {e + 1} complete");
             }
         }
 

@@ -61,6 +61,8 @@
             this.count0 = new System.Windows.Forms.Label();
             this.btnTrainModel = new System.Windows.Forms.Button();
             this.btnSaveModel = new System.Windows.Forms.Button();
+            this.txtOutput = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cntxTrainingNumbers.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -422,11 +424,29 @@
             this.btnSaveModel.UseVisualStyleBackColor = false;
             this.btnSaveModel.Click += new System.EventHandler(this.btnSaveModel_Click);
             // 
+            // txtOutput
+            // 
+            this.txtOutput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtOutput.Location = new System.Drawing.Point(44, 340);
+            this.txtOutput.Multiline = true;
+            this.txtOutput.Name = "txtOutput";
+            this.txtOutput.ReadOnly = true;
+            this.txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtOutput.Size = new System.Drawing.Size(293, 321);
+            this.txtOutput.TabIndex = 18;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // ctlTrainingSuite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.btnSaveModel);
             this.Controls.Add(this.countNaN);
             this.Controls.Add(this.count9);
@@ -491,5 +511,7 @@
         private System.Windows.Forms.Label count1;
         private System.Windows.Forms.Label count0;
         private System.Windows.Forms.Button btnSaveModel;
+        private System.Windows.Forms.TextBox txtOutput;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

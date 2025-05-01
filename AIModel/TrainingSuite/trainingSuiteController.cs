@@ -59,7 +59,7 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
         ///Uses an 80/20 split after balancing.
         ///Architecture: 256-128-64-11
         ///</summary>
-        public void TrainModel(double learningRate = 3.0, int epochs = 128, int miniBatchSize = 10)
+        public void TrainModel(double learningRate = 3.0, int epochs = 192, int miniBatchSize = 10)
         {
 
             var allData = _mgr.SelectAll()
@@ -86,7 +86,7 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
             _lastLayers = layers;
             var nn = new NeuralNetwork2(layers);
 
-            nn.SGD(trainingData, epochs, miniBatchSize, learningRate);
+            nn.SGD(trainingData, epochs, miniBatchSize, learningRate, _view);
 
             int correct = testSet.Count(r =>
                 ArgMax(nn.FeedForward(FlattenMatrix(TrainingData16.UnpackBoolMatrix(r.InputData))))
@@ -100,6 +100,7 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
             _lastTestSize = testSet.Count;
             _lastAccuracy = accuracy;
 
+            _view.SetOutput($"Balanced training complete. Test accuracy: {_lastAccuracy:P2}");
             Debug.WriteLine($"Balanced training complete. Test accuracy: {_lastAccuracy:P2}");
         }
 
@@ -107,7 +108,7 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
         /// Persists the last trained model to the database (biases & weights).
         /// Call this only after Train().
         /// </summary>
-        public void SaveModel(string modelName = "HWNN v0.2")
+        public bool SaveModel(string modelName = "HWNN v0.3")
         {
             if (_lastNetwork == null)
                 throw new InvalidOperationException("Please train the model before saving.");
@@ -117,18 +118,21 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
             _modelRecord.OutputSize = _lastLayers.Last();
             _modelRecord.LastUpdated = DateTime.Now;
 
+            bool bResult = false;
             if (_modelRecord.ModelId == 0)
             {
                 _modelRecord.ModelName = modelName;
-                _modelRecord.AddRecord();
+                bResult = _modelRecord.AddRecord();
             }
             else
             {
-                _modelRecord.UpdateRecord();
+                bResult = _modelRecord.UpdateRecord();
             }
 
             _modelRecord.SaveNeuralNetwork(_lastNetwork);
             _lastNetwork = null; //Reset to prevent double saving the same model
+
+            return bResult;
         }
 
         #endregion
