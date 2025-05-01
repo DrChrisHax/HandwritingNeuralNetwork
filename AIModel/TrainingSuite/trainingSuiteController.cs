@@ -111,7 +111,10 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
         public bool SaveModel(string modelName = "HWNN v0.4")
         {
             if (_lastNetwork == null)
-                throw new InvalidOperationException("Please train the model before saving.");
+            {
+                _view.SetOutput("Please train the model before saving.");
+                return false;
+            }
 
             _modelRecord.Layers = "[" + string.Join(",", _lastLayers) + "]";
             _modelRecord.InputSize = _lastLayers[0];
