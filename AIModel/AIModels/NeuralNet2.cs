@@ -55,7 +55,7 @@ namespace HandwritingNeuralNetwork.AIModel
                            .index;
             //index 0–9 => digit; index 10 => not‑a‑number
             idx = probs[idx] > 0.5f ? idx : -1;
-            Debug.WriteLine($"Classified as idx");
+            Debug.WriteLine($"Classified as {idx}");
             return idx;
         }
 

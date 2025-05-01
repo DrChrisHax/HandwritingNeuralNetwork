@@ -59,7 +59,7 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
         ///Uses an 80/20 split after balancing.
         ///Architecture: 256-128-64-11
         ///</summary>
-        public void TrainModel(double learningRate = 3.0, int epochs = 192, int miniBatchSize = 10)
+        public void TrainModel(double learningRate = 3.0, int epochs = 8, int miniBatchSize = 10)
         {
 
             var allData = _mgr.SelectAll()
@@ -108,7 +108,7 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
         /// Persists the last trained model to the database (biases & weights).
         /// Call this only after Train().
         /// </summary>
-        public bool SaveModel(string modelName = "HWNN v0.3")
+        public bool SaveModel(string modelName = "HWNN v0.4")
         {
             if (_lastNetwork == null)
                 throw new InvalidOperationException("Please train the model before saving.");
