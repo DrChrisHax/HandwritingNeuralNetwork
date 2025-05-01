@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
@@ -95,87 +96,120 @@ namespace HandwritingNeuralNetwork.Models
         }
 
         ///<summary>
-        ///Saves the current NeuralNetwork2 object's parameters (biases and weights)
-        ///into the database tables for this model.
+        ///Bulk‐inserts all biases and weights for the given network using SqlBulkCopy.
         ///</summary>
         public bool SaveNeuralNetwork(NeuralNetwork2 nn)
         {
-            bool success = true;
             try
             {
-                using (SqlConnection connection = new SqlConnection(_connectionString))
+                using (var connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    //First, remove any previously saved parameters for this model.
-                    using (SqlCommand cmd = new SqlCommand("DELETE FROM NNBias WHERE ModelId = @ModelId", connection))
-                    {
-                        cmd.Parameters.AddWithValue("@ModelId", ModelId);
-                        cmd.ExecuteNonQuery();
-                    }
-                    using (SqlCommand cmd = new SqlCommand("DELETE FROM NNWeight WHERE ModelId = @ModelId", connection))
-                    {
-                        cmd.Parameters.AddWithValue("@ModelId", ModelId);
-                        cmd.ExecuteNonQuery();
-                    }
 
-                    //--- Save Biases ---
-                    //NeuralNetwork2 stores biases as a List<double[]>.
-                    for (int layer = 0; layer < nn.Biases.Count; layer++)
+                    using (var tx = connection.BeginTransaction())
                     {
-                        double[] biasArray = nn.Biases[layer];
-                        for (int neuron = 0; neuron < biasArray.Length; neuron++)
+                        // 1) Clean out old params
+                        using (var del = new SqlCommand(
+                            "DELETE FROM NNBias WHERE ModelId = @ModelId; " +
+                            "DELETE FROM NNWeight WHERE ModelId = @ModelId;",
+                            connection, tx))
                         {
-                            using (SqlCommand cmd = new SqlCommand(
-                                "INSERT INTO NNBias (ModelId, LayerIndex, NeuronIndex, BiasValue) " +
-                                "VALUES (@ModelId, @LayerIndex, @NeuronIndex, @BiasValue)", connection))
+                            del.Parameters.AddWithValue("@ModelId", ModelId);
+                            del.ExecuteNonQuery();
+                        }
+
+                        // 2) Build bias DataTable
+                        var biasTable = new DataTable();
+                        biasTable.Columns.Add("ModelId", typeof(int));
+                        biasTable.Columns.Add("LayerIndex", typeof(int));
+                        biasTable.Columns.Add("NeuronIndex", typeof(int));
+                        biasTable.Columns.Add("BiasValue", typeof(double));
+
+                        int biasCount = 0;
+                        for (int layer = 0; layer < nn.Biases.Count; layer++)
+                        {
+                            int layerIdx = layer + 1;
+                            for (int neuron = 0; neuron < nn.Biases[layer].Length; neuron++)
                             {
-                                cmd.Parameters.AddWithValue("@ModelId", ModelId);
-                                //Convert back to 1-based layer indexing.
-                                cmd.Parameters.AddWithValue("@LayerIndex", layer + 1);
-                                cmd.Parameters.AddWithValue("@NeuronIndex", neuron);
-                                cmd.Parameters.AddWithValue("@BiasValue", biasArray[neuron]);
-                                cmd.ExecuteNonQuery();
+                                biasTable.Rows.Add(
+                                    ModelId,
+                                    layerIdx,
+                                    neuron,
+                                    nn.Biases[layer][neuron]
+                                );
+                                biasCount++;
                             }
                         }
-                    }
+                        Debug.WriteLine($"[SaveNN] Prepared {biasCount} bias rows.");
 
-                    //--- Save Weights ---
-                    //NeuralNetwork2 stores weights as a List<double[,]>
-                    for (int layer = 0; layer < nn.Weights.Count; layer++)
-                    {
-                        double[,] weightMatrix = nn.Weights[layer];
-                        int rows = weightMatrix.GetLength(0);
-                        int cols = weightMatrix.GetLength(1);
-                        // Here, fromLayerIndex equals the current layer, and toLayerIndex equals (layer + 1)
-                        int fromLayerIndex = layer;
-                        int toLayerIndex = layer + 1;
-                        for (int i = 0; i < rows; i++)
+                        // 3) Build weight DataTable
+                        var weightTable = new DataTable();
+                        weightTable.Columns.Add("ModelId", typeof(int));
+                        weightTable.Columns.Add("FromLayerIndex", typeof(int));
+                        weightTable.Columns.Add("ToLayerIndex", typeof(int));
+                        weightTable.Columns.Add("RowIndex", typeof(int));
+                        weightTable.Columns.Add("ColIndex", typeof(int));
+                        weightTable.Columns.Add("WeightValue", typeof(double));
+
+                        int weightCount = 0;
+                        for (int layer = 0; layer < nn.Weights.Count; layer++)
                         {
-                            for (int j = 0; j < cols; j++)
+                            int fromLayer = layer;
+                            int toLayer = layer + 1;
+                            var mat = nn.Weights[layer];
+                            for (int i = 0; i < mat.GetLength(0); i++)
                             {
-                                using (SqlCommand cmd = new SqlCommand(
-                                    "INSERT INTO NNWeight (ModelId, FromLayerIndex, ToLayerIndex, RowIndex, ColIndex, WeightValue) " +
-                                    "VALUES (@ModelId, @FromLayerIndex, @ToLayerIndex, @RowIndex, @ColIndex, @WeightValue)", connection))
+                                for (int j = 0; j < mat.GetLength(1); j++)
                                 {
-                                    cmd.Parameters.AddWithValue("@ModelId", ModelId);
-                                    cmd.Parameters.AddWithValue("@FromLayerIndex", fromLayerIndex);
-                                    cmd.Parameters.AddWithValue("@ToLayerIndex", toLayerIndex);
-                                    cmd.Parameters.AddWithValue("@RowIndex", i);
-                                    cmd.Parameters.AddWithValue("@ColIndex", j);
-                                    cmd.Parameters.AddWithValue("@WeightValue", weightMatrix[i, j]);
-                                    cmd.ExecuteNonQuery();
+                                    weightTable.Rows.Add(
+                                        ModelId,
+                                        fromLayer,
+                                        toLayer,
+                                        i,
+                                        j,
+                                        mat[i, j]
+                                    );
+                                    weightCount++;
                                 }
                             }
                         }
+                        Debug.WriteLine($"[SaveNN] Prepared {weightCount} weight rows.");
+
+                        // 4) Bulk‐copy biases
+                        using (var bulk = new SqlBulkCopy(connection, SqlBulkCopyOptions.Default, tx))
+                        {
+                            bulk.DestinationTableName = "NNBias";
+                            bulk.ColumnMappings.Add("ModelId", "ModelId");
+                            bulk.ColumnMappings.Add("LayerIndex", "LayerIndex");
+                            bulk.ColumnMappings.Add("NeuronIndex", "NeuronIndex");
+                            bulk.ColumnMappings.Add("BiasValue", "BiasValue");
+                            bulk.WriteToServer(biasTable);
+                        }
+
+                        // 5) Bulk‐copy weights
+                        using (var bulk = new SqlBulkCopy(connection, SqlBulkCopyOptions.Default, tx))
+                        {
+                            bulk.DestinationTableName = "NNWeight";
+                            bulk.ColumnMappings.Add("ModelId", "ModelId");
+                            bulk.ColumnMappings.Add("FromLayerIndex", "FromLayerIndex");
+                            bulk.ColumnMappings.Add("ToLayerIndex", "ToLayerIndex");
+                            bulk.ColumnMappings.Add("RowIndex", "RowIndex");
+                            bulk.ColumnMappings.Add("ColIndex", "ColIndex");
+                            bulk.ColumnMappings.Add("WeightValue", "WeightValue");
+                            bulk.WriteToServer(weightTable);
+                        }
+
+                        tx.Commit();
                     }
                 }
+
+                return true;
             }
             catch (Exception ex)
             {
                 Debug.Print(ex.ToString());
-                success = false;
+                return false;
             }
-            return success;
         }
     }
 }
