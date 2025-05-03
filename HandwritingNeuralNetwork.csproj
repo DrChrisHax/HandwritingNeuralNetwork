@@ -184,7 +184,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="README.md" />
-    <None Include="Resources\mnist-8.onnx" />
+    <None Include="SQLBackup\HWNN.bak">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -203,21 +205,40 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include="Resources\NeuralNetIcon.ico" />
-    <Content Include="SQLScripts\Databases\HWNN.sql" />
-    <Content Include="SQLScripts\StaticData\CreateAdminAccount.sql" />
-    <Content Include="SQLScripts\Tables\NeuralNetworkModel.sql" />
-    <Content Include="SQLScripts\Tables\NNModel_Bias_Weight.sql" />
-    <Content Include="SQLScripts\Tables\SystemUser.sql" />
-    <Content Include="SQLScripts\Tables\AIModelTable.sql" />
-    <Content Include="SQLScripts\Tables\TrainingData.sql" />
-    <Content Include="SQLScripts\Tables\TrainingData16.sql" />
+    <Content Include="Resources\NeuralNetIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScripts\Databases\HWNN.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScripts\StaticData\CreateAdminAccount.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScripts\Tables\NeuralNetworkModel.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScripts\Tables\NNModel_Bias_Weight.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScripts\Tables\SystemUser.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScripts\Tables\AIModelTable.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScripts\Tables\TrainingData.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScripts\Tables\TrainingData16.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(ProjectDir)SQLScripts\*" "$(TargetDir)SQLScripts" /E /I /Y
-xcopy "$(ProjectDir)Resources\*" "$(TargetDir)Resources" /E /I /Y</PostBuildEvent>
+xcopy "$(ProjectDir)Resources\*" "$(TargetDir)Resources" /E /I /Y
+xcopy "$(ProjectDir)SQLBackup\*" "$(TargetDir)SQLBackup" /E /I /Y</PostBuildEvent>
   </PropertyGroup>
   <Import Project="packages\Microsoft.ML.OnnxRuntime.Managed.1.21.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets" Condition="Exists('packages\Microsoft.ML.OnnxRuntime.Managed.1.21.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -10,11 +10,13 @@ namespace HandwritingNeuralNetwork.SQLAccess
         private readonly string _masterConnectionString;
         private readonly string _databaseConnectionString;
         private const string DatabaseName = "HWNN";
+        private readonly string _backupFilePath;
 
         public DBInit()
         {
             _masterConnectionString = "Server=localhost\\HWNN;Database=master;User Id=sa;Password=abc123!@#;";
             _databaseConnectionString = $"Server=localhost\\HWNN;Database={DatabaseName};User Id=sa;Password=abc123!@#;";
+            _backupFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SQLBackup", "HWNN.bak");
         }
 
         public void Init()

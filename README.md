@@ -77,3 +77,65 @@ Training can be initiated through the Admin UI and monitored via real-time updat
 - This project was completed as part of **CPSC 362 - Software Engineering**.
 
 ---
+
+## How to install sql server
+1. Install SQL Server
+
+    Download and install SQL Server Developer Edition (free) from:
+    https://learn.microsoft.com/en-us/sql/sql-server/download-sql-server
+
+    During installation:
+        Choose Developer Edition.
+        Select Database Engine Services feature.
+        Set Instance Name to: HWNN
+            (Make sure it’s a Named Instance and not Default!)
+        For Authentication:
+            Enable Mixed Mode (SQL Server and Windows Authentication).
+            Set the sa (System Administrator) password to:
+            abc123!@#
+    Finish installation.
+
+2. Install SQL Server Management Studio (SSMS)
+
+    Download and install SSMS from:
+    https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms
+
+  ---
+
+## How to restore the database
+1. Prepare the Backup File
+    
+    Locate the provided backup file:    
+    /SQLBackup/HWNN.bak
+
+Move the HWNN.bak file to a folder SQL Server can access easily, such as:
+
+    C:\SQLBackups\HWNN.bak
+    (Create the C:\SQLBackups\ folder if it doesn't exist.)
+
+2. Restore Database Using SSMS
+
+    Open SQL Server Management Studio.
+    Connect to your server:
+        Server Type: Database Engine
+        Server Name:
+        localhost\HWNN
+        Authentication: SQL Server Authentication
+            Login: sa
+            Password: abc123!@#
+    Right-click Databases ➔ Restore Database....
+    Choose:
+        Source: Device ➔ Browse ➔ Add ➔ select C:\SQLBackups\HWNN.bak.
+    In Restore options:
+        Check HWNN.
+        Go to Files tab and verify .mdf and .ldf paths.
+    Click OK to start restore.
+
+3. Confirm Setup
+
+    Expand Databases ➔ You should see HWNN database listed.
+    Expand tables to confirm that schema has been restored properly.
+
+
+### Note: Restoring the database is only needed to load in the training data and AI model
+### Note: You must have SQL server running on your machine for this project to work
