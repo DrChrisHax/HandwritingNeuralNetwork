@@ -126,22 +126,31 @@ namespace HandwritingNeuralNetwork.AIModel
 
         public void SGD(List<(double[] input, double[] output)> trainingData, int epochs, int miniBatchSize, double eta, IViewTrainingSuite view)
         {
-            //Train the NN using mini-batch stochastic gradient descent
-            //The training data is a list of tuples representing the input and the desired output
-
             int n = trainingData.Count;
+
+            // Start total timer
+            var swTotal = Stopwatch.StartNew();
 
             for (int e = 0; e < epochs; e++)
             {
+                var swEpoch = Stopwatch.StartNew();
+
                 var shuffled = trainingData.OrderBy(x => rand.Next()).ToList();
                 for (int k = 0; k < n; k += miniBatchSize)
                 {
                     var miniBatch = shuffled.Skip(k).Take(miniBatchSize).ToList();
                     UpdateMiniBatch(miniBatch, eta);
                 }
-                Debug.WriteLine($"Epoch {e + 1} complete");
-                view.SetOutput($"Epoch {e + 1} complete");
+
+                swEpoch.Stop();
+
+                Debug.WriteLine($"Epoch {e + 1} complete in {swEpoch.Elapsed.TotalSeconds:F2}s");
+                view.SetOutput($"Epoch {e + 1} complete in {swEpoch.Elapsed.TotalSeconds:F2}s");
             }
+
+            swTotal.Stop();
+            Debug.WriteLine($"Total training time: {swTotal.Elapsed.TotalMinutes:F0}m {(swTotal.Elapsed.TotalSeconds % 60):F2}s");
+            view.SetOutput($"Total training time: {swTotal.Elapsed.TotalMinutes:F0}m {(swTotal.Elapsed.TotalSeconds % 60):F2}s");
         }
 
         private void UpdateMiniBatch(List<(double[] input, double[] output)> miniBatch, double eta)

@@ -1,6 +1,7 @@
 ﻿using HandwritingNeuralNetwork.Models;
 using HandwritingNeuralNetwork.Shared;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -57,11 +58,10 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
         ///<summary>
         ///Trains the network on a balanced sample (under-sampled to the smallest class).
         ///Uses an 80/20 split after balancing.
-        ///Architecture: 256-128-64-11
+        ///Architecture: 256-128-64-10
         ///</summary>
-        public void TrainModel(double learningRate = 3.0, int epochs = 8, int miniBatchSize = 10)
+        public void TrainModel(double learningRate = 4.0, int epochs = 128, int miniBatchSize = 20)
         {
-
             var allData = _mgr.SelectAll()
                               .Where(r => char.IsDigit(r.DataLabel.First()))
                               .ToList();
@@ -82,7 +82,7 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
                 output: CreateOutputVector(r.DataLabel.First())
             )).ToList();
 
-            int[] layers = { 256, 128, 64, 10 };
+            int[] layers = {256, 128, 64, 10};
             _lastLayers = layers;
             var nn = new NeuralNetwork2(layers);
 
@@ -94,21 +94,20 @@ namespace HandwritingNeuralNetwork.AIModel.TrainingSuite
             );
             double accuracy = (double)correct / testSet.Count;
 
-            //Store results for later saving
             _lastNetwork = nn;
             _lastTrainSize = trainSize;
             _lastTestSize = testSet.Count;
             _lastAccuracy = accuracy;
 
-            _view.SetOutput($"Balanced training complete. Test accuracy: {_lastAccuracy:P2}");
-            Debug.WriteLine($"Balanced training complete. Test accuracy: {_lastAccuracy:P2}");
+            _view.SetOutput($"Balanced training complete.{Environment.NewLine} Test accuracy: {_lastAccuracy:P2}");
+            Debug.WriteLine($"Balanced training complete.{Environment.NewLine} Test accuracy: {_lastAccuracy:P2}");
         }
 
         /// <summary>
         /// Persists the last trained model to the database (biases & weights).
         /// Call this only after Train().
         /// </summary>
-        public bool SaveModel(string modelName = "HWNN v0.4")
+        public bool SaveModel(string modelName = "HWNN v0.5")
         {
             if (_lastNetwork == null)
             {

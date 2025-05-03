@@ -44,71 +44,78 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(13, 12);
+            this.lblTitle.Location = new System.Drawing.Point(10, 10);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(90, 32);
+            this.lblTitle.Size = new System.Drawing.Size(69, 26);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Login";
             // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(58, 80);
+            this.lblUsername.Location = new System.Drawing.Point(44, 65);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(76, 16);
+            this.lblUsername.Size = new System.Drawing.Size(61, 13);
             this.lblUsername.TabIndex = 1;
             this.lblUsername.Text = "Username: ";
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(66, 120);
+            this.lblPassword.Location = new System.Drawing.Point(50, 98);
+            this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(70, 16);
+            this.lblPassword.Size = new System.Drawing.Size(56, 13);
             this.lblPassword.TabIndex = 2;
             this.lblPassword.Text = "Password:";
             // 
             // lblConfirmPassword
             // 
             this.lblConfirmPassword.AutoSize = true;
-            this.lblConfirmPassword.Location = new System.Drawing.Point(13, 160);
+            this.lblConfirmPassword.Location = new System.Drawing.Point(10, 130);
+            this.lblConfirmPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblConfirmPassword.Name = "lblConfirmPassword";
-            this.lblConfirmPassword.Size = new System.Drawing.Size(118, 16);
+            this.lblConfirmPassword.Size = new System.Drawing.Size(94, 13);
             this.lblConfirmPassword.TabIndex = 3;
             this.lblConfirmPassword.Text = "Confirm Password:";
             this.lblConfirmPassword.Visible = false;
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(162, 75);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtUsername.Location = new System.Drawing.Point(122, 61);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(212, 22);
+            this.txtUsername.Size = new System.Drawing.Size(160, 20);
             this.txtUsername.TabIndex = 4;
+            this.txtUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtKeyPress);
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(162, 115);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPassword.Location = new System.Drawing.Point(122, 93);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(212, 22);
+            this.txtPassword.Size = new System.Drawing.Size(160, 20);
             this.txtPassword.TabIndex = 5;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtKeyPress);
             // 
             // txtConfirmPassword
             // 
-            this.txtConfirmPassword.Location = new System.Drawing.Point(162, 155);
-            this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(122, 126);
+            this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
-            this.txtConfirmPassword.Size = new System.Drawing.Size(212, 22);
+            this.txtConfirmPassword.Size = new System.Drawing.Size(160, 20);
             this.txtConfirmPassword.TabIndex = 6;
             this.txtConfirmPassword.Visible = false;
+            this.txtConfirmPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtKeyPress);
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(162, 196);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogin.Location = new System.Drawing.Point(122, 159);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(212, 30);
+            this.btnLogin.Size = new System.Drawing.Size(159, 24);
             this.btnLogin.TabIndex = 7;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -117,9 +124,10 @@
             // lnkCreateAccount
             // 
             this.lnkCreateAccount.AutoSize = true;
-            this.lnkCreateAccount.Location = new System.Drawing.Point(158, 237);
+            this.lnkCreateAccount.Location = new System.Drawing.Point(118, 193);
+            this.lnkCreateAccount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lnkCreateAccount.Name = "lnkCreateAccount";
-            this.lnkCreateAccount.Size = new System.Drawing.Size(101, 16);
+            this.lnkCreateAccount.Size = new System.Drawing.Size(84, 13);
             this.lnkCreateAccount.TabIndex = 8;
             this.lnkCreateAccount.TabStop = true;
             this.lnkCreateAccount.Text = "Create Account ";
@@ -130,16 +138,17 @@
             this.lblWarning.AutoSize = true;
             this.lblWarning.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWarning.ForeColor = System.Drawing.Color.Red;
-            this.lblWarning.Location = new System.Drawing.Point(15, 289);
+            this.lblWarning.Location = new System.Drawing.Point(11, 235);
+            this.lblWarning.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblWarning.Name = "lblWarning";
-            this.lblWarning.Size = new System.Drawing.Size(248, 19);
+            this.lblWarning.Size = new System.Drawing.Size(220, 16);
             this.lblWarning.TabIndex = 9;
             this.lblWarning.Text = "Invalid Username or Password";
             this.lblWarning.Visible = false;
             // 
             // ctlLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.lblWarning);
@@ -152,9 +161,9 @@
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblTitle);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ctlLogin";
-            this.Size = new System.Drawing.Size(889, 800);
+            this.Size = new System.Drawing.Size(667, 650);
             this.ResumeLayout(false);
             this.PerformLayout();
 

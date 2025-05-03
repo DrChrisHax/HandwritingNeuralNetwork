@@ -86,6 +86,7 @@ namespace HandwritingNeuralNetwork.Login
                     return;
                 }
                 _controller.CreateAccount();
+                Clear();
             } else
             {
                 if (_controller.Login())
@@ -124,6 +125,16 @@ namespace HandwritingNeuralNetwork.Login
             }
         }
 
+        private void TxtKeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch (e.KeyChar)
+            {
+                case (char)Keys.Enter:
+                    btnLogin_Click(null, null);
+                    e.Handled = true;
+                    break;
+            }
+        }
 
 
         #endregion
@@ -138,8 +149,7 @@ namespace HandwritingNeuralNetwork.Login
         }
 
 
+
         #endregion
-
-
     }
 }
